@@ -1,0 +1,20 @@
+.homepage {
+  .search-container {
+    .box {
+      width: 100%;
+    }
+  }
+  .main-content {
+    button {
+      width: 250px;
+    }
+    .title {
+      text-align: center;
+    }
+    .content {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+    }
+  }
+}

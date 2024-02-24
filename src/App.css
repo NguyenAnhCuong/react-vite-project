@@ -40,3 +40,32 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-container {
+  background-image: url("src/assets/bg1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .header-container {
+    .navbar-nav {
+      .nav-link {
+        &.active {
+          color: #ff0000;
+        }
+      }
+    }
+  }
+  .main-container {
+    /* flex: 1; 
+    display: flex; */
+  }
+
+  .footer-container {
+    margin-top: auto;
+  }
+}
