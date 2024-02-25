@@ -1,20 +1,77 @@
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import {
+  ProSidebar,
+  Menu,
+  MenuItem,
+  SubMenu,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+} from "react-pro-sidebar";
+import {
+  FaTachometerAlt,
+  FaGem,
+  FaList,
+  FaGithub,
+  FaRegLaughWink,
+  FaHeart,
+} from "react-icons/fa";
+import "react-pro-sidebar/dist/css/styles.css";
+
+import { useNavigate } from "react-router-dom";
 
 const SideBar = (props) => {
+  const { image, collapsed, toggled, handleToggleSidebar } = props;
+  const navigate = useNavigate();
+
   return (
-    <div className="">
-      <Sidebar>
-        <Menu>
-          <SubMenu label="Charts">
-            <MenuItem> Pie charts </MenuItem>
-            <MenuItem> Line charts </MenuItem>
-          </SubMenu>
-          <MenuItem> Documentation </MenuItem>
-          <MenuItem> Calendar </MenuItem>
-        </Menu>
-      </Sidebar>
-      ;
-    </div>
+    <>
+      <ProSidebar
+        image={"src/assets/tenko.jpg"}
+        collapsed={collapsed}
+        toggled={toggled}
+        breakPoint="md"
+        onToggle={handleToggleSidebar}
+      >
+        <SidebarHeader onClick={() => navigate("/")}>
+          <FaGem size={"2rem"} className="mx-2" />
+          <span className="title">React Vite</span>
+        </SidebarHeader>
+        <SidebarContent>
+          <Menu iconShape="circle">
+            <MenuItem icon={<FaHeart />} onClick={() => navigate("/admin")}>
+              {" "}
+              Dashboard{" "}
+            </MenuItem>
+            <SubMenu title="Manage" icon={<FaList />}>
+              <MenuItem onClick={() => navigate("manageusers")}>
+                Mange User
+              </MenuItem>
+              <MenuItem> Line charts </MenuItem>
+            </SubMenu>
+          </Menu>
+        </SidebarContent>
+        <SidebarFooter style={{ textAlign: "center" }}>
+          <div
+            className="sidebar-btn-wrapper"
+            style={{
+              padding: "20px 24px",
+            }}
+          >
+            <FaGithub size={"1.5rem"} />
+            <span
+              style={{
+                marginLeft: "5px",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+              }}
+            >
+              Source code
+            </span>
+          </div>
+        </SidebarFooter>
+      </ProSidebar>
+    </>
   );
 };
 export default SideBar;

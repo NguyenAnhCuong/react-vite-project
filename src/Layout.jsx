@@ -4,6 +4,8 @@ import App from "./App";
 import UserPage from "./components/user/userPage";
 import HomePage from "./components/Home/HomePage";
 import Admin from "./components/admin/Admin";
+import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
+import ManageUser from "./components/admin/Manage/user/ManageUser";
 
 const Layout = () => {
   return (
@@ -13,7 +15,11 @@ const Layout = () => {
           <Route index element={<HomePage />} />
           <Route path="/user" element={<UserPage />} />
         </Route>
-        <Route path="/admin" element={<Admin />} />
+
+        <Route path="/admin" element={<Admin />}>
+          <Route index element={<DashBoard />} />
+          <Route path={"manageusers"} element={<ManageUser />} />
+        </Route>
       </Routes>
     </>
   );
