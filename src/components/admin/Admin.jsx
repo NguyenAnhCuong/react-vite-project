@@ -12,10 +12,14 @@ const Admin = (props) => {
       <div className="admin-sidebar">
         <SideBar collapsed={collapsed} />
       </div>
-      <div className="admin- content">
-        <FaBars onClick={() => setCollapsed(!collapsed)} />
+      <div className="admin-content">
+        <div className="admin-header">
+          <FaBars size={"1.5rem"} onClick={() => setCollapsed(!collapsed)} />
+        </div>
 
-        <Outlet />
+        <div className="admin-main">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

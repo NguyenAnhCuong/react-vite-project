@@ -6,6 +6,7 @@ import HomePage from "./components/Home/HomePage";
 import Admin from "./components/admin/Admin";
 import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
 import ManageUser from "./components/admin/Manage/user/ManageUser";
+import AddNewUser from "./components/admin/Manage/user/AddNewUser";
 
 const Layout = () => {
   return (
@@ -18,6 +19,7 @@ const Layout = () => {
 
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />
+          <Route path={"addnewusers"} element={<AddNewUser />} />
           <Route path={"manageusers"} element={<ManageUser />} />
         </Route>
       </Routes>

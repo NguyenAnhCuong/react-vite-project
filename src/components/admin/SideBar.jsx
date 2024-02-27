@@ -39,14 +39,15 @@ const SideBar = (props) => {
         <SidebarContent>
           <Menu iconShape="circle">
             <MenuItem icon={<FaHeart />} onClick={() => navigate("/admin")}>
-              {" "}
-              Dashboard{" "}
+              Dashboard
             </MenuItem>
             <SubMenu title="Manage" icon={<FaList />}>
+              <MenuItem onClick={() => navigate("addnewusers")}>
+                Add New User
+              </MenuItem>
               <MenuItem onClick={() => navigate("manageusers")}>
                 Mange User
               </MenuItem>
-              <MenuItem> Line charts </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>
