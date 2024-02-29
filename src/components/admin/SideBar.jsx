@@ -1,3 +1,4 @@
+import tenko from "../../assets/tenko.jpg";
 import {
   ProSidebar,
   Menu,
@@ -26,13 +27,16 @@ const SideBar = (props) => {
   return (
     <>
       <ProSidebar
-        image={"src/assets/tenko.jpg"}
+        image={tenko}
         collapsed={collapsed}
         toggled={toggled}
         breakPoint="md"
         onToggle={handleToggleSidebar}
       >
-        <SidebarHeader onClick={() => navigate("/")}>
+        <SidebarHeader
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
           <FaGem size={"2rem"} className="mx-2" />
           <span className="title">React Vite</span>
         </SidebarHeader>

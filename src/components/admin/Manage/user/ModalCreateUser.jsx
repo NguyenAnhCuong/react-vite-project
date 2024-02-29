@@ -4,8 +4,8 @@ import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 
 const ModalCreateUser = (props) => {
-  //   const { show, setShow } = { props };
-  const [show, setShow] = useState(false);
+  const { show, setShow } = props;
+  // const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,9 +26,9 @@ const ModalCreateUser = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
-      </Button>
+      </Button> */}
 
       <Modal
         className="modal-add-user"
