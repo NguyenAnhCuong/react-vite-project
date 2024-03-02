@@ -2,13 +2,22 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
+import { postCreateNewUser } from "../../../utils/api/ApiServices";
+import { toast } from "react-toastify";
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
   // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassword("");
+    setImage("");
+    setRole("USEr");
+    setUsername("");
+    setPreviewImg("");
+  };
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +30,18 @@ const ModalCreateUser = (props) => {
     if (e.target && e.target.files && e.target.files[0]) {
       setPreviewImg(URL.createObjectURL(e.target.files[0]));
       setImage(e.target.files[0]);
+    }
+  };
+
+  const handleSubmitCreateUser = async () => {
+    //validate
+    //api
+
+    const res = await postCreateNewUser(email, password, username, role, image);
+
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      handleClose();
     }
   };
 
@@ -112,7 +133,7 @@ const ModalCreateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save Changes
           </Button>
         </Modal.Footer>

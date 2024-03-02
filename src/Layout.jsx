@@ -7,6 +7,7 @@ import Admin from "./components/admin/Admin";
 import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
 import ManageUser from "./components/admin/Manage/user/ManageUser";
 import AddNewUser from "./components/admin/Manage/user/AddNewUser";
+import { ToastContainer } from "react-toastify";
 
 const Layout = () => {
   return (
@@ -23,6 +24,17 @@ const Layout = () => {
           <Route path={"manageusers"} element={<ManageUser />} />
         </Route>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        rtl={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pa
+      />
     </>
   );
 };
