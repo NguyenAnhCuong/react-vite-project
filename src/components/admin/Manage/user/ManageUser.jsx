@@ -4,10 +4,13 @@ import ModalCreateUser from "./ModalCreateUser";
 import ListUser from "./ListUser";
 import { FcPlus } from "react-icons/fc";
 import { getAllUser } from "../../../utils/api/ApiServices";
+import ModalUpdateUser from "./ModalUpdateUser";
 
 const ManageUser = (props) => {
   const [listUser, setListUser] = useState([]);
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
+  const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
+  const [dataUpdate, setDataUpdate] = useState({});
 
   const handleCloseModalCreateUser = (value) => {
     setShowModalCreateUser(value);
@@ -22,6 +25,11 @@ const ManageUser = (props) => {
     if (res.EC === 0) {
       setListUser(res.DT);
     }
+  };
+
+  const handleClickUpdateUser = (user) => {
+    setShowModalUpdateUser(true);
+    setDataUpdate(user);
   };
 
   return (
@@ -42,12 +50,23 @@ const ManageUser = (props) => {
         </div>
 
         <div className="table-user container-fluid">
-          <ListUser listUser={listUser} setListUser={setListUser} />
+          <ListUser
+            handleClickUpdateUser={handleClickUpdateUser}
+            listUser={listUser}
+            setListUser={setListUser}
+          />
         </div>
         <ModalCreateUser
           show={showModalCreateUser}
           // setShow={setShowModalCreateUser}
           setShow={handleCloseModalCreateUser}
+          fetchListUser={fetchListUser}
+        />
+        <ModalUpdateUser
+          show={showModalUpdateUser}
+          setShow={setShowModalUpdateUser}
+          fetchListUser={fetchListUser}
+          dataUpdate={dataUpdate}
         />
       </div>
     </div>
