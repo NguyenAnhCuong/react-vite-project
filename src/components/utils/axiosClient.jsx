@@ -1,10 +1,10 @@
-import axios from "../utils/axiosClient.jsx";
+import axios from "axios";
 
-const instance = axios.create({
-  baseURL: "https://localhost:8081/",
+const axiosClient = axios.create({
+  baseURL: "http://localhost:8081/",
 });
 
-axios.interceptors.request.use(
+axiosClient.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     return config;
@@ -16,7 +16,7 @@ axios.interceptors.request.use(
 );
 
 // Add a response interceptor
-axios.interceptors.response.use(
+axiosClient.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -31,4 +31,4 @@ axios.interceptors.response.use(
   }
 );
 
-export default instance;
+export default axiosClient;

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosClient";
 
 const postCreateNewUser = (email, password, username, role, image) => {
   const form = new FormData();
@@ -11,4 +11,8 @@ const postCreateNewUser = (email, password, username, role, image) => {
   return axios.post("api/v1/participant", form);
 };
 
-export { postCreateNewUser };
+const getAllUser = () => {
+  return axios.get("api/v1/participant/all");
+};
+
+export { postCreateNewUser, getAllUser };
