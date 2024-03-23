@@ -1,7 +1,12 @@
 import { useState } from "react";
+import ReactPaginate from "react-paginate";
 
-const ListUser = (props) => {
-  const { listUser, setListUser } = props;
+const ListUserPaginate = (props) => {
+  const { listUser, setListUser, pageCount } = props;
+
+  const handlePageClick = (event) => {
+    props.fetchListUserWithPaginate(+event.selected + 1);
+  };
 
   return (
     <>
@@ -50,7 +55,28 @@ const ListUser = (props) => {
           )}
         </tbody>
       </table>
+      <div className="d-flex justify-content-center">
+        <ReactPaginate
+          nextLabel="Next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={2}
+          pageCount={pageCount}
+          previousLabel="< Previous"
+          pageLinkClassName="page-link"
+          pageClassName="page-item"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+          breakLabel="..."
+          breakClassName="page-item"
+          breakLinkClassName="page-link"
+          containerClassName="pagination"
+          forcePage={""}
+        />
+      </div>
     </>
   );
 };
-export default ListUser;
+export default ListUserPaginate;

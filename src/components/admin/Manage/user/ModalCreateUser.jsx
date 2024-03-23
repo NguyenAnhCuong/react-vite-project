@@ -14,7 +14,7 @@ const ModalCreateUser = (props) => {
     setEmail("");
     setPassword("");
     setImage("");
-    setRole("USEr");
+    setRole("USER");
     setUsername("");
     setPreviewImg("");
   };

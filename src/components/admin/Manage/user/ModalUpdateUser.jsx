@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { postCreateNewUser } from "../../../utils/api/ApiServices";
+import { UpdateUser, postCreateNewUser } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import _ from "lodash";
 
@@ -15,9 +15,10 @@ const ModalUpdateUser = (props) => {
     setEmail("");
     setPassword("");
     setImage("");
-    setRole("USEr");
+    setRole("USER");
     setUsername("");
     setPreviewImg("");
+    props.resetDataUpdate();
   };
 
   const [email, setEmail] = useState("");
@@ -50,8 +51,7 @@ const ModalUpdateUser = (props) => {
     //validate
     //api
 
-    const res = await postCreateNewUser(email, password, username, role, image);
-
+    const res = await UpdateUser(dataUpdate.id, username, role, image);
     if (res && res.EC === 0) {
       toast.success(res.EM);
       handleClose();

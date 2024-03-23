@@ -7,7 +7,8 @@ import Admin from "./components/admin/Admin";
 import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
 import ManageUser from "./components/admin/Manage/user/ManageUser";
 import AddNewUser from "./components/admin/Manage/user/AddNewUser";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Layout = () => {
   return (
@@ -32,8 +33,7 @@ const Layout = () => {
         rtl={false}
         closeOnClick
         pauseOnFocusLoss
-        draggable
-        pa
+        draggablepa
       />
     </>
   );
