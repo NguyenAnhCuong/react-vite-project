@@ -6,6 +6,7 @@ const ListUserPaginate = (props) => {
 
   const handlePageClick = (event) => {
     props.fetchListUserWithPaginate(+event.selected + 1);
+    props.setCurrentPage(+event.selected + 1);
   };
 
   return (
@@ -73,7 +74,7 @@ const ListUserPaginate = (props) => {
           breakClassName="page-item"
           breakLinkClassName="page-link"
           containerClassName="pagination"
-          forcePage={""}
+          forcePage={props.currentPage - 1}
         />
       </div>
     </>

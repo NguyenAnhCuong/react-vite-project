@@ -9,6 +9,7 @@ import ManageUser from "./components/admin/Manage/user/ManageUser";
 import AddNewUser from "./components/admin/Manage/user/AddNewUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./components/Auth/Login";
 
 const Layout = () => {
   return (
@@ -24,6 +25,7 @@ const Layout = () => {
           <Route path={"addnewusers"} element={<AddNewUser />} />
           <Route path={"manageusers"} element={<ManageUser />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
       <ToastContainer
         position="top-right"

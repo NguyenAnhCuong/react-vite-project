@@ -14,6 +14,7 @@ import ListUserPaginate from "./ListUserPaginate";
 const ManageUser = (props) => {
   const LIMIT_USER = 5;
 
+  const [currentPage, setCurrentPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const [listUser, setListUser] = useState([]);
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
@@ -90,6 +91,8 @@ const ManageUser = (props) => {
             pageCount={pageCount}
             setListUser={setListUser}
             fetchListUserWithPaginate={fetchListUserWithPaginate}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
         <ModalCreateUser
@@ -97,19 +100,28 @@ const ManageUser = (props) => {
           // setShow={setShowModalCreateUser}
           setShow={handleCloseModalCreateUser}
           fetchListUser={fetchListUser}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          fetchListUserWithPaginate={fetchListUserWithPaginate}
         />
         <ModalUpdateUser
           show={showModalUpdateUser}
           setShow={setShowModalUpdateUser}
           fetchListUser={fetchListUser}
           dataUpdate={dataUpdate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
           resetDataUpdate={resetDataUpdate}
+          fetchListUserWithPaginate={fetchListUserWithPaginate}
         />
         <ModalDeleteUser
           show={showModalDeleteUser}
           setShow={setShowModalDeleteUser}
           dataDelete={dataDelete}
           fetchListUser={fetchListUser}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          fetchListUserWithPaginate={fetchListUserWithPaginate}
         />
       </div>
     </div>

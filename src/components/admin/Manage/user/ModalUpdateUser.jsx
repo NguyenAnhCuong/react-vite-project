@@ -47,7 +47,7 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const handleSubmitCreateUser = async () => {
+  const handleSubmitUpdateUser = async () => {
     //validate
     //api
 
@@ -55,7 +55,8 @@ const ModalUpdateUser = (props) => {
     if (res && res.EC === 0) {
       toast.success(res.EM);
       handleClose();
-      await props.fetchListUser();
+      // await props.fetchListUser();
+      await props.fetchListUserWithPaginate(props.currentPage);
     } else {
       toast.error(res.EM);
     }
@@ -151,7 +152,7 @@ const ModalUpdateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
+          <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
             Save Changes
           </Button>
         </Modal.Footer>
