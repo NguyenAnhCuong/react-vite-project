@@ -1,8 +1,11 @@
 import React from "react";
 import "./HomePage.scss";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = (props) => {
+  const navigate = useNavigate();
+
   return (
     <div className="homepage">
       <div className="search-container">
@@ -33,7 +36,12 @@ const HomePage = (props) => {
         </div>
         <div className="content mt-5">
           <div>
-            <button className="btn btn-primary">Bat dau</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/login")}
+            >
+              Bat dau
+            </button>
           </div>
           <div>
             <button className="btn btn-success">Thu ngay</button>
