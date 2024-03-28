@@ -5,12 +5,16 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <BrowserRouter>
-    <Layout />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  </Provider>
 
   //  </React.StrictMode>
 );
