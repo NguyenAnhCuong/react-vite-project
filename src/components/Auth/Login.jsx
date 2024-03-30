@@ -3,21 +3,30 @@ import "./Login.scss";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../utils/api/ApiServices";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
+import { ImSpinner3 } from "react-icons/im";
 
 const Login = (props) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const [isLoading, setIsloading] = useState(false);
 
   const handleLogin = async () => {
     //validate
     //submit api
+    setIsloading(true);
     let res = await postLogin(email, password);
     if (res && res.EC === 0) {
+      dispatch(doLogin());
       toast.success(res.EM);
+      setIsloading(false);
       navigate("/");
     } else {
       toast.error(res.EM);
+      setIsloading(false);
     }
   };
 
@@ -55,8 +64,13 @@ const Login = (props) => {
         </div>
         <span className="forgot-password">Forgot password?</span>
         <div>
-          <button onClick={() => handleLogin()} className="btn-submit">
-            Log in to React Vite
+          <button
+            onClick={() => handleLogin()}
+            className="btn-submit"
+            disabled={isLoading}
+          >
+            {isLoading === true && <ImSpinner3 className="loader-icon" />}
+            <span>Log in to React Vite</span>
           </button>
         </div>
         <div className="back text-center">

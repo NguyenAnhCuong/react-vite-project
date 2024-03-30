@@ -2,10 +2,15 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const account = useSelector((state) => state.user.account);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const handleLogOut = () => {};
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -27,16 +32,29 @@ const Header = () => {
             </NavLink>
           </Nav>
           <Nav>
-            <button
-              className="btn btn-success"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-            <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item>Profile</NavDropdown.Item>
-              <NavDropdown.Item>Log out</NavDropdown.Item>
-            </NavDropdown>
+            {isAuthenticated === false ? (
+              <>
+                <button
+                  className="btn btn-success mx-3"
+                  onClick={() => navigate("/login")}
+                >
+                  Login
+                </button>
+                <button
+                  className="btn btn-dark"
+                  onClick={() => navigate("/register")}
+                >
+                  Sign up
+                </button>
+              </>
+            ) : (
+              <NavDropdown title="Setting" id="basic-nav-dropdown">
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => handleLogOut()}>
+                  Log out
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -2,9 +2,12 @@ import React from "react";
 import "./HomePage.scss";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HomePage = (props) => {
   const navigate = useNavigate();
+  const account = useSelector((state) => state.user.account);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return (
     <div className="homepage">
