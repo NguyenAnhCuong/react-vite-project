@@ -29,12 +29,25 @@ const Header = () => {
             <NavLink to={"/"} className="nav-link">
               Home
             </NavLink>
-            <NavLink to={"/user"} className="nav-link">
-              User
-            </NavLink>
-            <NavLink to={"/admin"} className="nav-link">
-              Admin
-            </NavLink>
+            {isAuthenticated === true ? (
+              <>
+                <NavLink to={"/user"} className="nav-link">
+                  User
+                </NavLink>
+                <NavLink to={"/admin"} className="nav-link">
+                  Admin
+                </NavLink>
+              </>
+            ) : (
+              <>
+                <NavLink to={"/login"} className="nav-link">
+                  User
+                </NavLink>
+                <NavLink to={"/login"} className="nav-link">
+                  Admin
+                </NavLink>
+              </>
+            )}
           </Nav>
           <Nav>
             {isAuthenticated === false ? (

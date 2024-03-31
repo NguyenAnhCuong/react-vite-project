@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const HomePage = (props) => {
   const navigate = useNavigate();
-  const account = useSelector((state) => state.user.account);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return (
@@ -39,12 +38,21 @@ const HomePage = (props) => {
         </div>
         <div className="content mt-5">
           <div>
-            <button
-              className="btn btn-primary"
-              onClick={() => navigate("/login")}
-            >
-              Bat dau
-            </button>
+            {isAuthenticated === true ? (
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/user")}
+              >
+                Bat dau
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/login")}
+              >
+                Tao Tai Khoan
+              </button>
+            )}
           </div>
           <div>
             <button className="btn btn-success">Thu ngay</button>
