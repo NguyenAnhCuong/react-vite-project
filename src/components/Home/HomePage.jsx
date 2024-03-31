@@ -6,7 +6,7 @@ const HomePage = (props) => {
   return (
     <div className="homepage">
       <div className="search-container">
-        <div className="mt-3 d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <Row>
             <Col>
               <Form className="box d-flex">

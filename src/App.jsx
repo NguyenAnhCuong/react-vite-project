@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import Layout from "./Layout";
 import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
@@ -12,10 +12,7 @@ const App = () => {
         <Header />
       </div>
       <div className="main-container">
-        <div className="sidenav-container"></div>
-        <div className="app-content">
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
       <div className="footer-container">
         <FooterComponent />
