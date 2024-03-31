@@ -52,6 +52,9 @@ const SideBar = (props) => {
               <MenuItem onClick={() => navigate("manageusers")}>
                 Mange User
               </MenuItem>
+              <MenuItem onClick={() => navigate("managequiz")}>
+                Mange Quiz
+              </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>

@@ -2,15 +2,20 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
+import { doLogOut } from "../../redux/action/userAction";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const account = useSelector((state) => state.user.account);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-  const handleLogOut = () => {};
+  const handleLogOut = () => {
+    dispatch(doLogOut());
+    navigate("/login");
+  };
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
