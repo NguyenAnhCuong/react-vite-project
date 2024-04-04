@@ -6,13 +6,13 @@ import HomePage from "./components/Home/HomePage";
 import Admin from "./components/admin/Admin";
 import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
 import ManageUser from "./components/admin/Manage/user/ManageUser";
-import AddNewUser from "./components/admin/Manage/user/AddNewUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ManageQuiz from "./components/admin/Manage/Quiz/ManageQuiz";
 import DetailQuiz from "./components/user/DetailQuiz";
+import ManageQuestion from "./components/admin/Manage/Question/ManageQuestion";
 
 const NotFound = () => {
   return (
@@ -34,7 +34,7 @@ const Layout = () => {
 
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />
-          <Route path={"addnewusers"} element={<AddNewUser />} />
+          <Route path={"managequestion"} element={<ManageQuestion />} />
           <Route path={"manageusers"} element={<ManageUser />} />
           <Route path={"managequiz"} element={<ManageQuiz />} />
         </Route>

@@ -15,7 +15,7 @@ const Admin = (props) => {
       >
         <SideBar collapsed={collapsed} />
       </div>
-      <div className="admin-content" style={{ width: "70%" }}>
+      <div className="admin-content">
         <div className="admin-header">
           <FaBars size={"1.5rem"} onClick={() => setCollapsed(!collapsed)} />
         </div>

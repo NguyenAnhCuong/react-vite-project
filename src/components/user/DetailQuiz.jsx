@@ -1,9 +1,11 @@
 import { useLocation, useParams } from "react-router";
 import "./DetailQuiz.scss";
 import { useEffect, useState } from "react";
-import { getDataQuiz } from "../utils/api/ApiServices";
+import { getDataQuiz, postSubmitQuiz } from "../utils/api/ApiServices";
 import _ from "lodash";
 import Questions from "./Questions";
+import { toast } from "react-toastify";
+import ModalResult from "./ModalResult";
 
 const DetailQuiz = (props) => {
   const params = useParams();
@@ -11,6 +13,9 @@ const DetailQuiz = (props) => {
   const location = useLocation();
   const [listQuiz, setListQuiz] = useState([]);
   const [currQuiz, setCurrQuiz] = useState(0);
+
+  const [showModalResult, setShowModalResult] = useState(false);
+  const [dataModalResult, setDataModalResult] = useState({});
 
   useEffect(() => {
     fetchQuestion();
@@ -48,7 +53,43 @@ const DetailQuiz = (props) => {
   const handleNext = () => {
     if (listQuiz && listQuiz.length > currQuiz + 1) setCurrQuiz(currQuiz + 1);
   };
-  const handleFinish = () => {};
+  const handleFinish = async () => {
+    const payload = {
+      quizId: +quizId,
+      answers: [],
+    };
+    let answers = [];
+    if (listQuiz && listQuiz.length > 0) {
+      listQuiz.forEach((item) => {
+        let questionId = item.questionId;
+        let userAnswerId = [];
+
+        item.answers.forEach((answer) => {
+          if (answer.isTheSelected === true) {
+            userAnswerId.push(answer.id);
+          }
+        });
+        answers.push({
+          questionId: +questionId,
+          userAnswerId: userAnswerId,
+        });
+      });
+      payload.answers = answers;
+      //submit api
+      let res = await postSubmitQuiz(payload);
+      if (res && res.EC === 0) {
+        setDataModalResult({
+          countCorrect: res.DT.countCorrect,
+          countTotal: res.DT.countTotal,
+          quizData: res.DT.quizData,
+        });
+        toast.success(res.EM);
+        setShowModalResult(true);
+      } else {
+        toast.error(res.EM);
+      }
+    }
+  };
 
   const handleCheckBox = (answerId, questionId) => {
     let listQuizClone = _.cloneDeep(listQuiz);
@@ -102,6 +143,11 @@ const DetailQuiz = (props) => {
         </div>
       </div>
       <div className="right-content">Count down</div>
+      <ModalResult
+        dataModalResult={dataModalResult}
+        show={showModalResult}
+        setShow={setShowModalResult}
+      />
     </div>
   );
 };
