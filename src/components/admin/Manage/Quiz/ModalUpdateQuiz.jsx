@@ -2,43 +2,41 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { UpdateUser, postCreateNewUser } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import _ from "lodash";
+import { UpdateQuizforAdmin } from "../../../utils/api/ApiServices";
 
-const ModalUpdateUser = (props) => {
-  const { show, setShow, dataUpdate } = props;
+const ModalUpdateQuiz = (props) => {
+  const { show, setShow, dataQuiz } = props;
   // const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
-    setEmail("");
-    setPassword("");
+    setName("");
+    setDescription("");
+    setDifficulty("EASY");
     setImage("");
-    setRole("USER");
-    setUsername("");
     setPreviewImg("");
-    props.resetDataUpdate();
+    props.resetDataUpdateQuiz();
   };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [role, setRole] = useState("USER");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [difficulty, setDifficulty] = useState("EASY");
   const [image, setImage] = useState("");
   const [previewImg, setPreviewImg] = useState("");
 
   useEffect(() => {
-    if (!_.isEmpty(dataUpdate)) {
-      setEmail(dataUpdate.email);
+    if (!_.isEmpty(dataQuiz)) {
+      setName(dataQuiz.name);
+      setDescription(dataQuiz.description);
+      setDifficulty(dataQuiz.difficulty);
       setImage("");
-      setRole(dataUpdate.role);
-      setUsername(dataUpdate.username);
-      if (dataUpdate.image) {
-        setPreviewImg(`data:image/jpeg;base64,${dataUpdate.image}`);
+      if (dataQuiz.image) {
+        setPreviewImg(`data:image/jpeg;base64,${dataQuiz.image}`);
       }
     }
-  }, [dataUpdate]);
+  }, [dataQuiz]);
 
   const handleUpload = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
@@ -47,16 +45,20 @@ const ModalUpdateUser = (props) => {
     }
   };
 
-  const handleSubmitUpdateUser = async () => {
+  const handleSubmitUpdateQuiz = async () => {
     //validate
     //api
-
-    const res = await UpdateUser(dataUpdate.id, username, role, image);
+    const res = await UpdateQuizforAdmin(
+      dataQuiz.id,
+      name,
+      description,
+      difficulty,
+      image
+    );
     if (res && res.EC === 0) {
       toast.success(res.EM);
       handleClose();
-      // await props.fetchListUser();
-      await props.fetchListUserWithPaginate(props.currentPage);
+      await props.fetchListQuiz();
     } else {
       toast.error(res.EM);
     }
@@ -64,10 +66,6 @@ const ModalUpdateUser = (props) => {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal
         className="modal-add-user"
         show={show}
@@ -76,55 +74,42 @@ const ModalUpdateUser = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update A User</Modal.Title>
+          <Modal.Title>Update A Quiz</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
             <div className="d-flex gap-5">
-              <div class="form-group col-5">
-                <label>Email address</label>
+              <div className="form-group col-5">
+                <label>Quiz Name</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
-                  value={email}
-                  disabled
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class="form-group col-5">
-                <label>Password</label>
+              <div className="form-group col-5">
+                <label>Quiz Description</label>
                 <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                  value={password}
-                  disabled
-                  onChange={(e) => setPassword(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
             </div>
             <div className="d-flex gap-5">
               <div className="form-group col-5">
-                <label>UserName</label>
-                <input
-                  type="text"
-                  placeholder="Enter UserName"
-                  className="form-control"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div class="form-group col-5">
-                <label>Role</label>
+                <label>Difficulty</label>
                 <select
-                  value={role}
-                  class="form-select"
-                  onChange={(e) => setRole(e.target.value)}
+                  value={difficulty}
+                  className="form-select"
+                  onChange={(e) => setDifficulty(e.target.value)}
                 >
-                  <option value="USER">USER</option>
-                  <option value={"ADMIN"}>ADMIN</option>
+                  <option value="EASY">EASY</option>
+                  <option value={"MEDIUM"}>MEDIUM</option>
+                  <option value={"HARD"}>HARD</option>
                 </select>
               </div>
             </div>
@@ -153,7 +138,7 @@ const ModalUpdateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
+          <Button variant="primary" onClick={() => handleSubmitUpdateQuiz()}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -161,4 +146,4 @@ const ModalUpdateUser = (props) => {
     </>
   );
 };
-export default ModalUpdateUser;
+export default ModalUpdateQuiz;

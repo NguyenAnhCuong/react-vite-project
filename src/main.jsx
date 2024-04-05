@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import "nprogress/nprogress.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
