@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import "./ManageQuestion.scss";
+import "./UpdateQ&A.scss";
 import { v4 as uuidv4 } from "uuid";
 import { TbHeartPlus } from "react-icons/tb";
 import { BsFillPatchPlusFill, BsFillPatchMinusFill } from "react-icons/bs";
@@ -8,17 +8,15 @@ import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { RiImage2Fill } from "react-icons/ri";
 import _, { values } from "lodash";
 import Lightbox from "react-18-image-lightbox";
-import ModalPreviewImage from "./ModalPreviewImage";
 import {
   getAllQuizforAdmin,
   postCreateNewAnswerForQuestion,
   postCreateNewQuestionForQuiz,
 } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
+import ModalPreviewImage2 from "./ModalPreviewImage";
 
-const ManageQuestion = (props) => {
-  const [selectedQuiz, setSelectedQuiz] = useState({});
-
+const UpdateQA = (props) => {
   const initQuestion = [
     {
       id: uuidv4(),
@@ -43,6 +41,7 @@ const ManageQuestion = (props) => {
     url: "",
   });
   const [listQuiz, setListQuiz] = useState([]);
+  const [selectedQuiz, setSelectedQuiz] = useState({});
 
   useEffect(() => {
     fetchListQuiz();
@@ -400,7 +399,7 @@ const ManageQuestion = (props) => {
             onCloseRequest={() => setPreviewImage(false)}
           />
         )} */}
-        <ModalPreviewImage
+        <ModalPreviewImage2
           show={previewImage}
           setShow={setPreviewImage}
           dataImage={dataImage}
@@ -409,4 +408,4 @@ const ManageQuestion = (props) => {
     </div>
   );
 };
-export default ManageQuestion;
+export default UpdateQA;

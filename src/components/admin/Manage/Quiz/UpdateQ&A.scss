@@ -1,0 +1,84 @@
+.question-container {
+  padding: 15px;
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .add-new-question {
+    .question-content {
+      display: flex;
+      gap: 25px;
+
+      .description {
+        width: 50%;
+      }
+      .group-upload {
+        padding-top: 15px;
+        .label-upload {
+          margin-right: 5px;
+          cursor: pointer;
+          font-size: 30px;
+          color: rgb(155, 43, 230);
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .btn-add {
+        display: flex;
+        gap: 10px;
+        padding-top: 15px;
+        .icon-add {
+          font-size: 25px;
+          color: red;
+          cursor: pointer;
+          &:hover {
+            color: rgb(190, 224, 65);
+          }
+        }
+        .icon-remove {
+          font-size: 25px;
+          color: blue;
+          cursor: pointer;
+          &:hover {
+            color: rgb(169, 204, 169);
+          }
+        }
+      }
+    }
+    .answer-content {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      padding-left: 20px;
+      align-items: center;
+      .checkbox {
+        font-size: 20px;
+      }
+      .a-description {
+        width: 50%;
+      }
+      .btn-add {
+        display: flex;
+        gap: 10px;
+        padding-top: 15px;
+        .icon-add {
+          font-size: 25px;
+          color: red;
+          cursor: pointer;
+          &:hover {
+            color: rgb(62, 166, 197);
+          }
+        }
+        .icon-remove {
+          font-size: 25px;
+          color: blue;
+          cursor: pointer;
+          &:hover {
+            color: rgb(196, 56, 161);
+          }
+        }
+      }
+    }
+  }
+}

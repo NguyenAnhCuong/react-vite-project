@@ -5,6 +5,8 @@ import "./index.css";
 import "nprogress/nprogress.css";
 import "react-perfect-scrollbar/dist/css/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-18-image-lightbox/style.css";
+import "react-image-gallery/styles/css/image-gallery.css";
 import { BrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
 import { Provider } from "react-redux";
