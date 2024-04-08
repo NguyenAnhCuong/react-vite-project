@@ -10,6 +10,7 @@ import _, { values } from "lodash";
 import Lightbox from "react-18-image-lightbox";
 import {
   getAllQuizforAdmin,
+  getQuizWithQA,
   postCreateNewAnswerForQuestion,
   postCreateNewQuestionForQuiz,
 } from "../../../utils/api/ApiServices";
@@ -47,6 +48,30 @@ const UpdateQA = (props) => {
     fetchListQuiz();
   }, []);
 
+  useEffect(() => {
+    if (selectedQuiz && selectedQuiz.value) {
+      fetchQuizWithQA();
+    }
+  }, [selectedQuiz]);
+
+  function urltoFile(url, filename, mimeType) {
+    if (url.startsWith("data:")) {
+      var arr = url.split(","),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[arr.length - 1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      var file = new File([u8arr], filename, { type: mime || mimeType });
+      return Promise.resolve(file);
+    }
+    return fetch(url)
+      .then((res) => res.arrayBuffer())
+      .then((buf) => new File([buf], filename, { type: mimeType }));
+  }
+
   const fetchListQuiz = async () => {
     let res = await getAllQuizforAdmin();
     if (res && res.EC === 0) {
@@ -57,6 +82,26 @@ const UpdateQA = (props) => {
         };
       });
       setListQuiz(newQuiz);
+    }
+  };
+
+  const fetchQuizWithQA = async () => {
+    let res = await getQuizWithQA(selectedQuiz.value);
+    if (res && res.EC === 0) {
+      let newQA = [];
+      for (let i = 0; i < res.DT.qa.length; i++) {
+        let q = res.DT.qa[i];
+        if (q.imageFile) {
+          q.imageName = `Question-${q.id}.jpg`;
+          q.imageFile = await urltoFile(
+            `data:image/jpg;base64,${q.imageFile}`,
+            `Question-${q.id}.jpg`,
+            `image/jpg`
+          );
+        }
+        newQA.push(q);
+      }
+      setQuestions(newQA);
     }
   };
 
@@ -214,13 +259,11 @@ const UpdateQA = (props) => {
       );
       //submit answer
       for (const item of question.answers) {
-        question.answers.map(async (item) => {
-          await postCreateNewAnswerForQuestion(
-            item.description,
-            item.isCorrect,
-            q.DT.id
-          );
-        });
+        await postCreateNewAnswerForQuestion(
+          item.description,
+          item.isCorrect,
+          q.DT.id
+        );
       }
     }
     toast.success("Create questions and answers succed!!!");
@@ -280,7 +323,9 @@ const UpdateQA = (props) => {
                         )
                       }
                     />
-                    <label>Question {index + 1}'s Description</label>
+                    <label style={{ zIndex: "0" }}>
+                      Question {index + 1}'s Description
+                    </label>
                   </div>
                   <div className="group-upload">
                     <label htmlFor={`${question.id}`}>
@@ -352,7 +397,9 @@ const UpdateQA = (props) => {
                               )
                             }
                           />
-                          <label>Answer {index + 1}</label>
+                          <label style={{ zIndex: "0" }}>
+                            Answer {index + 1}
+                          </label>
                         </div>
                         <div className="btn-add">
                           <span

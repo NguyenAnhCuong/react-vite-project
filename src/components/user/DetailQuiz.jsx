@@ -3,6 +3,7 @@ import "./DetailQuiz.scss";
 import { useEffect, useState } from "react";
 import { getDataQuiz, postSubmitQuiz } from "../utils/api/ApiServices";
 import _ from "lodash";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import Questions from "./Questions";
 import { toast } from "react-toastify";
 import ModalResult from "./ModalResult";
@@ -114,41 +115,53 @@ const DetailQuiz = (props) => {
   };
 
   return (
-    <div className="detail-quiz-container">
-      <div className="left-content">
-        <div className="title">
-          Quiz {quizId}: {location?.state?.quizTitle}
-        </div>
-        <hr />
-        <div className="quiz-body">
-          <img />
-        </div>
-        <div className="quiz-content">
-          <Questions
-            handleCheckBox={handleCheckBox}
-            currQuiz={currQuiz}
-            listQuiz={listQuiz && listQuiz.length > 0 ? listQuiz[currQuiz] : []}
+    <PerfectScrollbar style={{ height: "100vh" }}>
+      <>
+        <div className="detail-quiz-container">
+          <div className="left-content">
+            <div className="title">
+              Quiz {quizId}: {location?.state?.quizTitle}
+            </div>
+            <hr />
+            <div className="quiz-body">
+              <img />
+            </div>
+            <div className="quiz-content">
+              <Questions
+                handleCheckBox={handleCheckBox}
+                currQuiz={currQuiz}
+                listQuiz={
+                  listQuiz && listQuiz.length > 0 ? listQuiz[currQuiz] : []
+                }
+              />
+            </div>
+            <div className="footer">
+              <button className="btn btn-primary" onClick={() => handlePrev()}>
+                Prev
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => handleNext()}
+              >
+                Next
+              </button>
+              <button
+                className="btn btn-warning"
+                onClick={() => handleFinish()}
+              >
+                Finish
+              </button>
+            </div>
+          </div>
+          <div className="right-content">Count down</div>
+          <ModalResult
+            dataModalResult={dataModalResult}
+            show={showModalResult}
+            setShow={setShowModalResult}
           />
         </div>
-        <div className="footer">
-          <button className="btn btn-primary" onClick={() => handlePrev()}>
-            Prev
-          </button>
-          <button className="btn btn-secondary" onClick={() => handleNext()}>
-            Next
-          </button>
-          <button className="btn btn-warning" onClick={() => handleFinish()}>
-            Finish
-          </button>
-        </div>
-      </div>
-      <div className="right-content">Count down</div>
-      <ModalResult
-        dataModalResult={dataModalResult}
-        show={showModalResult}
-        setShow={setShowModalResult}
-      />
-    </div>
+      </>
+    </PerfectScrollbar>
   );
 };
 export default DetailQuiz;

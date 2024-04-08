@@ -54,7 +54,7 @@ const ManageQuestion = (props) => {
       let newQuiz = res.DT.map((item) => {
         return {
           value: item.id,
-          label: `${item.id} - ${item.description}`,
+          label: `${item.id} - ${item.name} -${item.description}`,
         };
       });
       setListQuiz(newQuiz);
@@ -214,14 +214,12 @@ const ManageQuestion = (props) => {
         question.imageFile
       );
       //submit answer
-      for (const item of question.answers) {
-        question.answers.map(async (item) => {
-          await postCreateNewAnswerForQuestion(
-            item.description,
-            item.isCorrect,
-            q.DT.id
-          );
-        });
+      for (const answer of question.answers) {
+        await postCreateNewAnswerForQuestion(
+          answer.description,
+          answer.isCorrect,
+          q.DT.id
+        );
       }
     }
     toast.success("Create questions and answers succed!!!");
@@ -281,7 +279,9 @@ const ManageQuestion = (props) => {
                         )
                       }
                     />
-                    <label>Question {index + 1}'s Description</label>
+                    <label style={{ zIndex: "0" }}>
+                      Question {index + 1}'s Description
+                    </label>
                   </div>
                   <div className="group-upload">
                     <label htmlFor={`${question.id}`}>
@@ -353,7 +353,9 @@ const ManageQuestion = (props) => {
                               )
                             }
                           />
-                          <label>Answer {index + 1}</label>
+                          <label style={{ zIndex: "0" }}>
+                            Answer {index + 1}
+                          </label>
                         </div>
                         <div className="btn-add">
                           <span

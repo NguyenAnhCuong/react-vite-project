@@ -1,5 +1,6 @@
 .admin-container {
   display: flex;
+
   .admin-sidebar {
     height: 100vh;
     // width: 250px;
@@ -14,13 +15,14 @@
   }
 
   .admin-content {
+    height: 100vh;
     width: 80%;
     .admin-header {
       margin: 5px;
       height: 30px;
     }
     .admin-main {
-      height: calc(100vh - 30px);
+      height: calc(100vh - 50px);
     }
   }
 }

@@ -3,7 +3,9 @@ import "./App.scss";
 import Layout from "./Layout";
 import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import FooterComponent from "./components/footer/FooterComponent";
+import b1 from "./assets/bg1.jpg";
 
 const App = () => {
   return (
@@ -13,7 +15,9 @@ const App = () => {
           <Header />
         </div>
         <div className="main-container">
-          <Outlet />
+          <PerfectScrollbar>
+            <Outlet />
+          </PerfectScrollbar>
         </div>
         <div className="footer-container">
           <FooterComponent />
