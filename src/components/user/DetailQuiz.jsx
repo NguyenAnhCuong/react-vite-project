@@ -7,6 +7,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import Questions from "./Questions";
 import { toast } from "react-toastify";
 import ModalResult from "./ModalResult";
+import RightContent from "./RigthContent/RightContent";
 
 const DetailQuiz = (props) => {
   const params = useParams();
@@ -124,7 +125,7 @@ const DetailQuiz = (props) => {
             </div>
             <hr />
             <div className="quiz-body">
-              <img />
+              <img src="" />
             </div>
             <div className="quiz-content">
               <Questions
@@ -153,7 +154,9 @@ const DetailQuiz = (props) => {
               </button>
             </div>
           </div>
-          <div className="right-content">Count down</div>
+          <div className="right-content">
+            <RightContent handleFinish={handleFinish} dataQuiz={listQuiz} />
+          </div>
           <ModalResult
             dataModalResult={dataModalResult}
             show={showModalResult}

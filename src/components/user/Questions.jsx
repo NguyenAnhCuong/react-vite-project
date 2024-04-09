@@ -1,7 +1,10 @@
 import _ from "lodash";
+import { useState } from "react";
+import ModalPreviewImage3 from "./RigthContent/ModalPreviewImage";
 
 const Questions = (props) => {
   const { listQuiz, currQuiz } = props;
+  const [showModalPreviewImage, setShowModalPreviewImage] = useState(false);
 
   if (_.isEmpty(listQuiz)) {
     return <></>;
@@ -15,7 +18,9 @@ const Questions = (props) => {
     <>
       {listQuiz.image ? (
         <div className="quiz-image">
-          <img src={`data:image/jpeg;base64,${listQuiz.image}`} />
+          <span onClick={() => setShowModalPreviewImage(true)}>
+            <img src={`data:image/jpeg;base64,${listQuiz.image}`} />
+          </span>
         </div>
       ) : (
         <div className="quiz-image"></div>
@@ -44,6 +49,11 @@ const Questions = (props) => {
             );
           })}
       </div>
+      <ModalPreviewImage3
+        show={showModalPreviewImage}
+        setShow={setShowModalPreviewImage}
+        dataImage={listQuiz}
+      />
     </>
   );
 };

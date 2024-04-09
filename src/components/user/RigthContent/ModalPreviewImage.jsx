@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { toast } from "react-toastify";
-import { deleteQuizForAdmin } from "../../../utils/api/ApiServices";
 
-const ModalPreviewImage = (props) => {
+const ModalPreviewImage3 = (props) => {
   const { show, setShow, dataImage } = props;
 
   const handleClose = () => setShow(false);
@@ -13,7 +11,7 @@ const ModalPreviewImage = (props) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{dataImage.title}</Modal.Title>
+          <Modal.Title>Question Image</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div
@@ -25,14 +23,9 @@ const ModalPreviewImage = (props) => {
               height: "400px",
             }}
           >
-            {/* <div style={{ textAlign: "center" }}>
-              <span style={{ fontSize: "20px", fontWeight: "600" }}>
-                {dataImage.title}
-              </span>
-            </div> */}
             <div style={{ width: "100%", height: "100%" }}>
               <img
-                src={dataImage.url}
+                src={`data:image/jpeg;base64,${dataImage.image}`}
                 style={{ width: "100%", height: "100%" }}
               />
             </div>
@@ -48,4 +41,4 @@ const ModalPreviewImage = (props) => {
   );
 };
 
-export default ModalPreviewImage;
+export default ModalPreviewImage3;

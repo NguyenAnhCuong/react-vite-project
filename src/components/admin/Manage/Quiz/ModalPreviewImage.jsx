@@ -13,7 +13,7 @@ const ModalPreviewImage2 = (props) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete A Quiz</Modal.Title>
+          <Modal.Title>{dataImage.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div
@@ -25,11 +25,6 @@ const ModalPreviewImage2 = (props) => {
               height: "400px",
             }}
           >
-            <div style={{ textAlign: "center" }}>
-              <span style={{ fontSize: "20px", fontWeight: "600" }}>
-                {dataImage.title}
-              </span>
-            </div>
             <div style={{ width: "100%", height: "100%" }}>
               <img
                 src={dataImage.url}

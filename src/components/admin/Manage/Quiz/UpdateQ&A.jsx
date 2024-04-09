@@ -13,6 +13,7 @@ import {
   getQuizWithQA,
   postCreateNewAnswerForQuestion,
   postCreateNewQuestionForQuiz,
+  postUpsertQA,
 } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import ModalPreviewImage2 from "./ModalPreviewImage";
@@ -251,24 +252,34 @@ const UpdateQA = (props) => {
     }
 
     //submit question
-    for (const question of questions) {
-      const q = await postCreateNewQuestionForQuiz(
-        +selectedQuiz.value,
-        question.description,
-        question.imageFile
-      );
-      //submit answer
-      for (const item of question.answers) {
-        await postCreateNewAnswerForQuestion(
-          item.description,
-          item.isCorrect,
-          q.DT.id
+    let questionsClone2 = _.cloneDeep(questions);
+    for (let i = 0; i < questionsClone2.length; i++) {
+      if (questionsClone2[i].imageFile) {
+        questionsClone2[i].imageFile = await toBase64(
+          questionsClone2[i].imageFile
         );
       }
     }
-    toast.success("Create questions and answers succed!!!");
-    setQuestions(initQuestion);
+    let res = await postUpsertQA({
+      quizId: selectedQuiz.value,
+      questions: questionsClone2,
+    });
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      fetchQuizWithQA();
+    } else {
+      toast.error(res.EM);
+      return;
+    }
   };
+
+  const toBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+    });
 
   const handlePreviewImage = (qId) => {
     let questionsClone = _.cloneDeep(questions);
