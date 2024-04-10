@@ -5,6 +5,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { doLogOut } from "../../redux/action/userAction";
+import { LogOut } from "../utils/api/ApiServices";
+import { toast } from "react-toastify";
+import Languages from "./Languages";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,9 +15,15 @@ const Header = () => {
   const account = useSelector((state) => state.user.account);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
-  const handleLogOut = () => {
-    dispatch(doLogOut());
-    navigate("/login");
+  const handleLogOut = async () => {
+    let res = await LogOut(account.email, account.refresh_token);
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      dispatch(doLogOut());
+      navigate("/login");
+    } else {
+      toast.error(res.EM);
+    }
   };
 
   return (
@@ -29,25 +38,12 @@ const Header = () => {
             <NavLink to={"/"} className="nav-link">
               Home
             </NavLink>
-            {isAuthenticated === true ? (
-              <>
-                <NavLink to={"/user"} className="nav-link">
-                  User
-                </NavLink>
-                <NavLink to={"/admin"} className="nav-link">
-                  Admin
-                </NavLink>
-              </>
-            ) : (
-              <>
-                <NavLink to={"/login"} className="nav-link">
-                  User
-                </NavLink>
-                <NavLink to={"/login"} className="nav-link">
-                  Admin
-                </NavLink>
-              </>
-            )}
+            <NavLink to={"/user"} className="nav-link">
+              User
+            </NavLink>
+            <NavLink to={"/admin"} className="nav-link">
+              Admin
+            </NavLink>
           </Nav>
           <Nav>
             {isAuthenticated === false ? (
@@ -73,6 +69,7 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             )}
+            <Languages />
           </Nav>
         </Navbar.Collapse>
       </Container>

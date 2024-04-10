@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const Countdown = (props) => {
-  const initDuration = 5;
+  const initDuration = 900;
   const [duration, setDuration] = useState(initDuration);
 
   const toHHMMSS = (secs) => {

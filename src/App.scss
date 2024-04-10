@@ -41,6 +41,12 @@
   color: #888;
 }
 
+.languages {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
+
 .app-container {
   background-size: cover;
   background-position: center;

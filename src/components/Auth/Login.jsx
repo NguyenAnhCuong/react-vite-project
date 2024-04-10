@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
 import { ImSpinner3 } from "react-icons/im";
+import Languages from "../header/Languages";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -16,6 +17,14 @@ const Login = (props) => {
 
   const handleLogin = async () => {
     //validate
+    if (!email) {
+      toast.error("Invalid email");
+      return;
+    }
+    if (!password) {
+      toast.error("Invalid password");
+      return;
+    }
     //submit api
     setIsloading(true);
     let res = await postLogin(email, password);
@@ -30,14 +39,21 @@ const Login = (props) => {
     }
   };
 
+  const handlePressEnter = (e) => {
+    if (e && e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
   return (
     <div className="login-container">
       <div className="header">
-        <span>Don't have an account?</span>
+        <span className="text">Don't have an account?</span>
         <button className="btn-sign-up" onClick={() => navigate("/register")}>
           Sign up
         </button>
-        <span className="help">Need help?</span>
+        <span className="text">Need help?</span>
+        <Languages />
       </div>
       <div className="title col-4 mx-auto">React Vite</div>
       <div className="Welcome col-4 mx-auto">Hello,My friend??</div>
@@ -57,6 +73,7 @@ const Login = (props) => {
           <input
             type="password"
             className="form-control"
+            onKeyDown={(e) => handlePressEnter(e)}
             placeholder="At least 3 characters"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

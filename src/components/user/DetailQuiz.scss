@@ -68,7 +68,7 @@
       flex-wrap: wrap;
       padding: 10px;
       .question {
-        background-color: rgb(107, 76, 70);
+        background-color: rgb(163 163 163);
         border: 1px solid;
         border-radius: 50%;
         color: white;
@@ -80,6 +80,12 @@
         cursor: pointer;
         &:hover {
           background-color: rgb(54, 124, 124);
+        }
+        &.selected {
+          background-color: red;
+        }
+        &.clicked {
+          background-color: black;
         }
       }
     }
