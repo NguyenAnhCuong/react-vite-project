@@ -12,6 +12,7 @@ import Layout from "./Layout.jsx";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store.jsx";
 import { PersistGate } from "redux-persist/integration/react";
+import i18n from "./components/utils/i18n.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>

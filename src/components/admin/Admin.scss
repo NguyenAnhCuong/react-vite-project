@@ -18,8 +18,21 @@
     height: 100vh;
     width: 80%;
     .admin-header {
+      display: flex;
+      justify-content: space-between;
       margin: 5px;
-      height: 30px;
+      height: 40px;
+      align-items: center;
+      padding-bottom: 10px;
+      padding-top: 5px;
+      border-bottom: 1px solid #ccc;
+      .left {
+        cursor: pointer;
+      }
+      .right {
+        display: flex;
+        gap: 15px;
+      }
     }
     .admin-main {
       height: calc(100vh - 50px);

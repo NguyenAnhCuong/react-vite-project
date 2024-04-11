@@ -1,7 +1,11 @@
 .register-container {
   .header {
     height: 45px;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    padding-right: 50px;
     .btn-sign-up {
       background-color: white;
       color: black;

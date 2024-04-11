@@ -1,0 +1,53 @@
+{
+  "homepage": {
+    "search": "Search",
+    "title1": "Whole business, one platform",
+    "title2": "Simple - Effective - Economical",
+    "login1": "Create an account",
+    "login2": "Getting Started",
+    "button3": "Try Now"
+  },
+  "header": {
+    "page": {
+      "home": "Home",
+      "user": "User",
+      "admin": "Admin"
+    },
+    "auth": {
+      "login": "Log in",
+      "signup": "Sign Up"
+    },
+    "setting": {
+      "setting": "Setting",
+      "profile": "Profile",
+      "logout": "Log Out"
+    }
+  },
+  "loginpage": {
+    "header": {
+      "text1": "Don't have an account",
+      "text2": "Need help",
+      "signup": "Sign up"
+    },
+    "content": {
+      "title": "Hello,My Friend",
+      "password": "Password",
+      "forgotpassword": "Forgot Password",
+      "loginButton": "Log in to React Vite",
+      "backhome": "Go to Home Page"
+    }
+  },
+  "registerpage": {
+    "header": {
+      "text1": "Already have an account",
+      "login": "Log in"
+    },
+    "content": {
+      "title": "Start a new journey",
+      "password": "Password",
+      "username": "Username",
+      "create": "Create my account",
+      "backhome": "Go to Home Page"
+    }
+  }
+}

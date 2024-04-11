@@ -3,10 +3,12 @@ import "./HomePage.scss";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useTranslation, Trans } from "react-i18next";
 
 const HomePage = (props) => {
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const { t } = useTranslation();
 
   return (
     <div className="homepage">
@@ -17,11 +19,11 @@ const HomePage = (props) => {
               <Form className="box d-flex">
                 <Form.Control
                   type="search"
-                  placeholder="Search"
+                  placeholder={t("homepage.search")}
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button>Search</Button>
+                <Button>{t("homepage.search")}</Button>
               </Form>
             </Col>
           </Row>
@@ -30,10 +32,10 @@ const HomePage = (props) => {
       <div className="main-content mt-5">
         <div className="title">
           <h1>
-            <span>Cả doanh nghiệp một nền tảng</span>
+            <span>{t("homepage.title1")}</span>
           </h1>
           <h2>
-            <span>Đơn giản - Hiệu quả - Tiết kiệm</span>
+            <span>{t("homepage.title2")}</span>
           </h2>
         </div>
         <div className="content mt-5">
@@ -43,19 +45,19 @@ const HomePage = (props) => {
                 className="btn btn-primary"
                 onClick={() => navigate("/user")}
               >
-                Bat dau
+                {t("homepage.login2")}
               </button>
             ) : (
               <button
                 className="btn btn-primary"
                 onClick={() => navigate("/login")}
               >
-                Tao Tai Khoan
+                {t("homepage.login1")}
               </button>
             )}
           </div>
           <div>
-            <button className="btn btn-success">Thu ngay</button>
+            <button className="btn btn-success">{t("homepage.button3")}</button>
           </div>
         </div>
       </div>

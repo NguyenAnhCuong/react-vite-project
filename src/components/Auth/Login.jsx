@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
 import { ImSpinner3 } from "react-icons/im";
 import Languages from "../header/Languages";
+import { useTranslation } from "react-i18next";
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const [isLoading, setIsloading] = useState(false);
+  const { t } = useTranslation();
 
   const handleLogin = async () => {
     //validate
@@ -48,15 +50,17 @@ const Login = (props) => {
   return (
     <div className="login-container">
       <div className="header">
-        <span className="text">Don't have an account?</span>
+        <span className="text">{t("loginpage.header.text1")}?</span>
         <button className="btn-sign-up" onClick={() => navigate("/register")}>
-          Sign up
+          {t("loginpage.header.signup")}
         </button>
-        <span className="text">Need help?</span>
+        <span className="text">{t("loginpage.header.text2")}?</span>
         <Languages />
       </div>
       <div className="title col-4 mx-auto">React Vite</div>
-      <div className="Welcome col-4 mx-auto">Hello,My friend??</div>
+      <div className="Welcome col-4 mx-auto">
+        {t("loginpage.content.title")}??
+      </div>
       <div className="content-form col-3 mx-auto">
         <div className="form-group">
           <label>Email</label>
@@ -69,7 +73,7 @@ const Login = (props) => {
           />
         </div>
         <div className="form-group">
-          <label>Password</label>
+          <label>{t("loginpage.content.password")}</label>
           <input
             type="password"
             className="form-control"
@@ -79,7 +83,9 @@ const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <span className="forgot-password">Forgot password?</span>
+        <span className="forgot-password">
+          {t("loginpage.content.forgotpassword")}?
+        </span>
         <div>
           <button
             onClick={() => handleLogin()}
@@ -87,11 +93,13 @@ const Login = (props) => {
             disabled={isLoading}
           >
             {isLoading === true && <ImSpinner3 className="loader-icon" />}
-            <span>Log in to React Vite</span>
+            <span>{t("loginpage.content.loginButton")}</span>
           </button>
         </div>
         <div className="back text-center">
-          <span onClick={() => navigate("/")}>&#60;&#60;Go Back Home</span>
+          <span onClick={() => navigate("/")}>
+            &#60;&#60;{t("loginpage.content.backhome")}
+          </span>
         </div>
       </div>
     </div>

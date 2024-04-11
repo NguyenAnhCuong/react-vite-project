@@ -14,6 +14,7 @@ import ManageQuiz from "./components/admin/Manage/Quiz/ManageQuiz";
 import DetailQuiz from "./components/user/DetailQuiz";
 import ManageQuestion from "./components/admin/Manage/Question/ManageQuestion";
 import PrivateRoutes from "./components/routes/PrivateRoute";
+import { Suspense } from "react";
 
 const NotFound = () => {
   return (
@@ -25,7 +26,7 @@ const NotFound = () => {
 
 const Layout = () => {
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
@@ -67,7 +68,7 @@ const Layout = () => {
         pauseOnFocusLoss
         draggablepa
       />
-    </>
+    </Suspense>
   );
 };
 

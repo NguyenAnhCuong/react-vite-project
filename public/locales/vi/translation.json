@@ -1,0 +1,53 @@
+{
+  "homepage": {
+    "search": "Tìm Kiếm",
+    "title1": "Cả doanh nghiệp một nền tảng",
+    "title2": "Đơn giản - Hiệu quả - Tiết kiệm",
+    "login1": "Tạo Tài Khoản",
+    "login2": "Bắt đầu",
+    "button3": "Thử ngay"
+  },
+  "header": {
+    "page": {
+      "home": "Trang chủ",
+      "user": "Người dùng",
+      "admin": "Quản trị"
+    },
+    "auth": {
+      "login": "Đăng nhập",
+      "signup": "Đăng kí"
+    },
+    "setting": {
+      "setting": "Cài đặt",
+      "profile": "Hồ Sơ",
+      "logout": "Đăng Xuất"
+    }
+  },
+  "loginpage": {
+    "header": {
+      "text1": "Không có Tài Khoản",
+      "text2": "Trợ Giúp",
+      "signup": "Đăng kí"
+    },
+    "content": {
+      "title": "Xin chào,Người anh em",
+      "password": "Mật khẩu",
+      "forgotpassword": "Quên mật khẩu",
+      "loginButton": "Đăng nhập",
+      "backhome": "Về trang chủ"
+    }
+  },
+  "registerpage": {
+    "header": {
+      "text1": "Đã có Tài Khoản",
+      "login": "Đăng nhập"
+    },
+    "content": {
+      "title": "Bắt đầu hành trình mới",
+      "password": "Mật khẩu",
+      "username": "Tên người dùng",
+      "create": "Tạo tài khoản",
+      "backhome": "Về trang chủ"
+    }
+  }
+}

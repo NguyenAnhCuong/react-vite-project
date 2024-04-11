@@ -3,10 +3,12 @@ import "./ListQuiz.scss";
 import { useEffect } from "react";
 import { getQuizByUser } from "../utils/api/ApiServices";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const ListQuiz = (props) => {
   const navigate = useNavigate();
   const [arrQuiz, setArrQuiz] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     getQuizData();

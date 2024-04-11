@@ -1,12 +1,30 @@
 import SideBar from "./SideBar";
 import "./Admin.scss";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import Languages from "../header/Languages";
+import { LogOut } from "../utils/api/ApiServices";
+import { useDispatch, useSelector } from "react-redux";
+import { doLogOut } from "../../redux/action/userAction";
 
 const Admin = (props) => {
+  const dispatch = useDispatch();
+  const account = useSelector((state) => state.user.account);
   const [collapsed, setCollapsed] = useState(false);
+
+  const handleLogOut = async () => {
+    let res = await LogOut(account.email, account.refresh_token);
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      dispatch(doLogOut());
+      navigate("/login");
+    } else {
+      toast.error(res.EM);
+    }
+  };
 
   return (
     <div className="admin-container">
@@ -18,7 +36,18 @@ const Admin = (props) => {
       </div>
       <div className="admin-content">
         <div className="admin-header">
-          <FaBars size={"1.5rem"} onClick={() => setCollapsed(!collapsed)} />
+          <span onClick={() => setCollapsed(!collapsed)}>
+            <FaBars className="left" size={"1.5rem"} />
+          </span>
+          <div className="right">
+            <Languages />
+            <NavDropdown title="Setting" id="basic-nav-dropdown">
+              <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => handleLogOut()}>
+                Log out
+              </NavDropdown.Item>
+            </NavDropdown>
+          </div>
         </div>
 
         <div className="admin-main">
