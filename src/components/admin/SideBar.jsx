@@ -19,8 +19,10 @@ import {
 import "react-pro-sidebar/dist/css/styles.css";
 
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SideBar = (props) => {
+  const { t } = useTranslation();
   const { image, collapsed, toggled, handleToggleSidebar } = props;
   const navigate = useNavigate();
 
@@ -37,23 +39,23 @@ const SideBar = (props) => {
           style={{ cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
-          <FaGem size={"2rem"} className="mx-2" />
+          <FaGem size={"2rem"} style={{ color: "blue" }} className="mx-2" />
           <span className="title">React Vite</span>
         </SidebarHeader>
         <SidebarContent>
           <Menu iconShape="circle">
             <MenuItem icon={<FaHeart />} onClick={() => navigate("/admin")}>
-              Dashboard
+              {t("admin.sidebar.dashboard")}
             </MenuItem>
-            <SubMenu title="Manage" icon={<FaList />}>
+            <SubMenu title={t("admin.sidebar.title")} icon={<FaList />}>
               <MenuItem onClick={() => navigate("manageusers")}>
-                Manage User
+                {t("admin.sidebar.manageuser")}
               </MenuItem>
               <MenuItem onClick={() => navigate("managequiz")}>
-                Manage Quiz
+                {t("admin.sidebar.managequiz")}
               </MenuItem>
               <MenuItem onClick={() => navigate("managequestion")}>
-                Manage Question
+                {t("admin.sidebar.managequestion")}
               </MenuItem>
             </SubMenu>
           </Menu>
@@ -74,7 +76,7 @@ const SideBar = (props) => {
                 overflow: "hidden",
               }}
             >
-              Source code
+              {t("admin.sidebar.sourcecode")}
             </span>
           </div>
         </SidebarFooter>

@@ -17,8 +17,10 @@ import {
 } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import ModalPreviewImage2 from "./ModalPreviewImage";
+import { useTranslation } from "react-i18next";
 
 const UpdateQA = (props) => {
+  const { t } = useTranslation();
   const initQuestion = [
     {
       id: uuidv4(),
@@ -295,11 +297,11 @@ const UpdateQA = (props) => {
 
   return (
     <div className="question-container">
-      <div className="title">Manage Question</div>
+      <div className="title">{t("admin.managequiz.updateQuiz.title")}</div>
       <br />
       <div className="add-new-question">
         <div className="col-6 form-group">
-          <label>Select Quiz:</label>
+          <label>{t("admin.managequiz.updateQuiz.select")}:</label>
           <Select
             value={selectedQuiz}
             options={listQuiz}
@@ -307,7 +309,7 @@ const UpdateQA = (props) => {
           />
         </div>
         <div className="mt-3">
-          <span>Add Questions:</span>
+          <span>{t("admin.managequiz.updateQuiz.question.label")}:</span>
         </div>
         {questions &&
           questions.length > 0 &&
@@ -335,7 +337,9 @@ const UpdateQA = (props) => {
                       }
                     />
                     <label style={{ zIndex: "0" }}>
-                      Question {index + 1}'s Description
+                      {t("admin.managequiz.updateQuiz.question.text1")}{" "}
+                      {index + 1}
+                      {t("admin.managequiz.updateQuiz.question.text2")}
                     </label>
                   </div>
                   <div className="group-upload">
@@ -409,7 +413,10 @@ const UpdateQA = (props) => {
                             }
                           />
                           <label style={{ zIndex: "0" }}>
-                            Answer {index + 1}
+                            {t(
+                              "admin.managequiz.updateQuiz.question.answers.label"
+                            )}{" "}
+                            {index + 1}
                           </label>
                         </div>
                         <div className="btn-add">
@@ -446,7 +453,7 @@ const UpdateQA = (props) => {
               className="btn btn-warning"
               onClick={() => handleSubmitQuestion()}
             >
-              Save Question
+              {t("admin.managequiz.updateQuiz.question.btn")}
             </button>
           </div>
         )}

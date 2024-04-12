@@ -9,11 +9,13 @@ import Languages from "../header/Languages";
 import { LogOut } from "../utils/api/ApiServices";
 import { useDispatch, useSelector } from "react-redux";
 import { doLogOut } from "../../redux/action/userAction";
+import { useTranslation } from "react-i18next";
 
 const Admin = (props) => {
   const dispatch = useDispatch();
   const account = useSelector((state) => state.user.account);
   const [collapsed, setCollapsed] = useState(false);
+  const { t } = useTranslation();
 
   const handleLogOut = async () => {
     let res = await LogOut(account.email, account.refresh_token);
@@ -42,9 +44,9 @@ const Admin = (props) => {
           <div className="right">
             <Languages />
             <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown.Item>{t("admin.setting.profile")}</NavDropdown.Item>
               <NavDropdown.Item onClick={() => handleLogOut()}>
-                Log out
+                {t("admin.setting.logout")}
               </NavDropdown.Item>
             </NavDropdown>
           </div>

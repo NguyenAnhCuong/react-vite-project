@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ReactPaginate from "react-paginate";
 
 const ListUserPaginate = (props) => {
+  const { t } = useTranslation();
   const { listUser, setListUser, pageCount } = props;
 
   const handlePageClick = (event) => {
@@ -15,10 +17,10 @@ const ListUserPaginate = (props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">UserName</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Action</th>
+            <th scope="col">{t("admin.manageuser.userPaginate.username")}</th>
+            <th scope="col">{t("admin.manageuser.userPaginate.email")}</th>
+            <th scope="col">{t("admin.manageuser.userPaginate.role")}</th>
+            <th scope="col">{t("admin.manageuser.userPaginate.action")}</th>
           </tr>
         </thead>
         <tbody>
@@ -32,18 +34,20 @@ const ListUserPaginate = (props) => {
                   <td>{user.email}</td>
                   <td>{user.role}</td>
                   <td>
-                    <button className="btn btn-info mx-2">View</button>
+                    <button className="btn btn-info mx-2">
+                      {t("admin.manageuser.userPaginate.btn.view")}
+                    </button>
                     <button
                       className="btn btn-warning mx-2"
                       onClick={() => props.handleClickUpdateUser(user)}
                     >
-                      Update
+                      {t("admin.manageuser.userPaginate.btn.update")}
                     </button>
                     <button
                       className="btn btn-danger mx-2"
                       onClick={() => props.handleClickDeleteUser(user)}
                     >
-                      Delete
+                      {t("admin.manageuser.userPaginate.btn.delete")}
                     </button>
                   </td>
                 </tr>
@@ -51,7 +55,10 @@ const ListUserPaginate = (props) => {
             })}
           {listUser && listUser === 0 && (
             <tr>
-              <td colSpan={"5"}>Not Found Data</td>
+              <td colSpan={"5"}>
+                {" "}
+                {t("admin.manageuser.userPaginate.noData")}
+              </td>
             </tr>
           )}
         </tbody>

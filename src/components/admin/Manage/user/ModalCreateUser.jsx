@@ -4,8 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
 import { postCreateNewUser } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const ModalCreateUser = (props) => {
+  const { t } = useTranslation();
   const { show, setShow } = props;
   // const [show, setShow] = useState(false);
 
@@ -64,28 +66,32 @@ const ModalCreateUser = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New User</Modal.Title>
+          <Modal.Title>{t("admin.manageuser.modal.create.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
             <div className="d-flex gap-5">
               <div class="form-group col-5">
-                <label>Email address</label>
+                <label>{t("admin.manageuser.modal.create.email")}</label>
                 <input
                   type="email"
                   class="form-control"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder={t(
+                    "admin.manageuser.modal.create.placeholder.email"
+                  )}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div class="form-group col-5">
-                <label>Password</label>
+                <label>{t("admin.manageuser.modal.create.password")}</label>
                 <input
                   type="password"
                   class="form-control"
-                  placeholder="Password"
+                  placeholder={t(
+                    "admin.manageuser.modal.create.placeholder.password"
+                  )}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -93,30 +99,36 @@ const ModalCreateUser = (props) => {
             </div>
             <div className="d-flex gap-5">
               <div className="form-group col-5">
-                <label>UserName</label>
+                <label>{t("admin.manageuser.modal.create.username")}</label>
                 <input
                   type="text"
-                  placeholder="Enter UserName"
+                  placeholder={t(
+                    "admin.manageuser.modal.create.placeholder.username"
+                  )}
                   className="form-control"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div class="form-group col-5">
-                <label>Role</label>
+                <label>{t("admin.manageuser.modal.create.role.title")}</label>
                 <select
                   class="form-select"
                   onChange={(e) => setRole(e.target.value)}
                 >
-                  <option value="USER">USER</option>
-                  <option value={"ADMIN"}>ADMIN</option>
+                  <option value="USER">
+                    {t("admin.manageuser.modal.create.role.user")}
+                  </option>
+                  <option value={"ADMIN"}>
+                    {t("admin.manageuser.modal.create.role.admin")}
+                  </option>
                 </select>
               </div>
             </div>
             <div className="form-group col-12 mt-2">
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus />
-                Upload File Image
+                {t("admin.manageuser.modal.create.uploadImage")}
               </label>
               <input
                 type="file"
@@ -129,17 +141,17 @@ const ModalCreateUser = (props) => {
               {previewImg ? (
                 <img src={previewImg} />
               ) : (
-                <span>Preview Image</span>
+                <span>{t("admin.manageuser.modal.create.preview")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("admin.manageuser.modal.create.btn.close")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save Changes
+            {t("admin.manageuser.modal.create.btn.save")}
           </Button>
         </Modal.Footer>
       </Modal>

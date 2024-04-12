@@ -11,10 +11,12 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getOverview } from "../../../utils/api/ApiServices";
+import { useTranslation } from "react-i18next";
 
 const DashBoard = (props) => {
   const [dataOverview, setDataOverview] = useState([]);
   const [dataChart, setDataChart] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchOverview();
@@ -53,11 +55,11 @@ const DashBoard = (props) => {
 
   return (
     <div className="dashboaed-container">
-      <div className="title">Analytics Dashboard</div>
+      <div className="title">{t("admin.dashboard.title")}</div>
       <div className="content">
         <div className="c-left">
           <div className="c">
-            <span className="text1">Total Users</span>
+            <span className="text1">{t("admin.dashboard.user")}</span>
             <span className="text2">
               {dataOverview &&
               dataOverview.users &&
@@ -69,7 +71,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="c">
-            <span className="text1">Total Quizzes</span>
+            <span className="text1">{t("admin.dashboard.quiz")}</span>
             <span className="text2">
               {dataOverview &&
               dataOverview.others &&
@@ -81,7 +83,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="c">
-            <span className="text1">Total Questions</span>
+            <span className="text1">{t("admin.dashboard.questions")}</span>
             <span className="text2">
               {dataOverview &&
               dataOverview.others &&
@@ -93,7 +95,7 @@ const DashBoard = (props) => {
             </span>
           </div>
           <div className="c">
-            <span className="text1">Total Answers</span>
+            <span className="text1">{t("admin.dashboard.answers")}</span>
             <span className="text2">
               {dataOverview &&
               dataOverview.others &&

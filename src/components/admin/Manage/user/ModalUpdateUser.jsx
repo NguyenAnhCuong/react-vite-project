@@ -5,8 +5,10 @@ import { FcPlus } from "react-icons/fc";
 import { UpdateUser, postCreateNewUser } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 const ModalUpdateUser = (props) => {
+  const { t } = useTranslation();
   const { show, setShow, dataUpdate } = props;
   // const [show, setShow] = useState(false);
 
@@ -76,29 +78,33 @@ const ModalUpdateUser = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Update A User</Modal.Title>
+          <Modal.Title>{t("admin.manageuser.modal.update.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
             <div className="d-flex gap-5">
               <div class="form-group col-5">
-                <label>Email address</label>
+                <label>{t("admin.manageuser.modal.update.email")}</label>
                 <input
                   type="email"
                   class="form-control"
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder={t(
+                    "admin.manageuser.modal.update.placeholder.email"
+                  )}
                   value={email}
                   disabled
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div class="form-group col-5">
-                <label>Password</label>
+                <label>{t("admin.manageuser.modal.update.password")}</label>
                 <input
                   type="password"
                   class="form-control"
-                  placeholder="Password"
+                  placeholder={t(
+                    "admin.manageuser.modal.update.placeholder.password"
+                  )}
                   value={password}
                   disabled
                   onChange={(e) => setPassword(e.target.value)}
@@ -107,31 +113,37 @@ const ModalUpdateUser = (props) => {
             </div>
             <div className="d-flex gap-5">
               <div className="form-group col-5">
-                <label>UserName</label>
+                <label>{t("admin.manageuser.modal.update.username")}</label>
                 <input
                   type="text"
-                  placeholder="Enter UserName"
+                  placeholder={t(
+                    "admin.manageuser.modal.update.placeholder.username"
+                  )}
                   className="form-control"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div class="form-group col-5">
-                <label>Role</label>
+                <label>{t("admin.manageuser.modal.update.role.title")}</label>
                 <select
                   value={role}
                   class="form-select"
                   onChange={(e) => setRole(e.target.value)}
                 >
-                  <option value="USER">USER</option>
-                  <option value={"ADMIN"}>ADMIN</option>
+                  <option value="USER">
+                    {t("admin.manageuser.modal.update.role.user")}
+                  </option>
+                  <option value={"ADMIN"}>
+                    {t("admin.manageuser.modal.update.role.admin")}
+                  </option>
                 </select>
               </div>
             </div>
             <div className="form-group col-12 mt-2">
               <label className="form-label label-upload" htmlFor="labelUpload">
                 <FcPlus />
-                Upload File Image
+                {t("admin.manageuser.modal.update.uploadImage")}
               </label>
               <input
                 type="file"
@@ -144,17 +156,17 @@ const ModalUpdateUser = (props) => {
               {previewImg ? (
                 <img src={previewImg} />
               ) : (
-                <span>Preview Image</span>
+                <span>{t("admin.manageuser.modal.update.preview")}</span>
               )}
             </div>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("admin.manageuser.modal.update.btn.close")}
           </Button>
           <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
-            Save Changes
+            {t("admin.manageuser.modal.update.btn.save")}
           </Button>
         </Modal.Footer>
       </Modal>

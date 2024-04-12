@@ -49,5 +49,196 @@
       "create": "Tạo tài khoản",
       "backhome": "Về trang chủ"
     }
+  },
+  "listquiz": {
+    "quizTitle": "Bài thi",
+    "button": "Bắt đầu thi",
+    "noQuiz": "Bạn không có bài thi nào"
+  },
+  "detailQuiz": {
+    "quizTitle": "Bài thi",
+    "button": {
+      "prev": "Trước",
+      "next": "Sau",
+      "finish": "Kết thúc"
+    },
+    "questions": {
+      "question": "Câu hỏi"
+    }
+  },
+  "modal": {
+    "result": {
+      "title": "Kết quả thi",
+      "text1": "Tổng câu hỏi",
+      "text2": "Tổng câu trả lời đúng",
+      "close": "Đóng",
+      "show": "Xem câu trả lời"
+    }
+  },
+  "admin": {
+    "setting": {
+      "profile": "Thông tin cá nhân",
+      "logout": "Đăng xuất"
+    },
+    "sidebar": {
+      "dashboard": "Thống kê",
+      "title": "Quản lí",
+      "manageuser": "Quản lí người dùng",
+      "managequiz": "Quản lí bài thi",
+      "managequestion": "Quản lí câu hỏi",
+      "sourcecode": "Mã nguồn"
+    },
+    "dashboard": {
+      "title": "Phân tích thống kê",
+      "user": "Tổng số người dùng",
+      "quiz": "Tổng số bài thi",
+      "questions": "Tổng số câu hỏi",
+      "answers": "Tổng số câu trả lời"
+    },
+    "manageuser": {
+      "title": "Quản lí người dùng",
+      "btnAddNew": "Thêm mới người dùng",
+      "userPaginate": {
+        "username": "Tên người dùng",
+        "email": "Email",
+        "role": "Vai trò",
+        "action": "Hành động",
+        "btn": {
+          "view": "Xem",
+          "update": "Cập nhật",
+          "delete": "Xóa"
+        },
+        "noData": "Không có dữ liệu"
+      },
+      "modal": {
+        "create": {
+          "title": "Thêm mới người dùng",
+          "email": "Địa chỉ email",
+          "password": "Mật khẩu",
+          "username": "Tên người dùng",
+          "role": {
+            "title": "Vai trò",
+            "user": "Người dùng",
+            "admin": "Quản trị"
+          },
+          "uploadImage": "Tải hình ảnh",
+          "preview": "Hiện hình ảnh",
+          "placeholder": {
+            "email": "Nhập email",
+            "password": "Nhập mật khẩu",
+            "username": "Nhập tên người dùng"
+          },
+          "btn": {
+            "close": "Đóng",
+            "save": "Lưu"
+          }
+        },
+        "update": {
+          "title": "Chỉnh sửa người dùng",
+          "email": "Địa chỉ email",
+          "password": "Mật khẩu",
+          "username": "Tên người dùng",
+          "role": {
+            "title": "Vai trò",
+            "user": "Người dùng",
+            "admin": "Quản trị"
+          },
+          "uploadImage": "Tải hình ảnh",
+          "preview": "Hiện hình ảnh",
+          "placeholder": {
+            "email": "Nhập email",
+            "password": "Nhập mật khẩu",
+            "username": "Nhập tên người dùng"
+          },
+          "btn": {
+            "close": "Đóng",
+            "save": "Lưu"
+          }
+        },
+        "delete": {
+          "title": "Xoá người dùng",
+          "text": "Bạn chắc chắn có muốn xóa người dùng này không",
+          "btn": {
+            "close": "Đóng",
+            "confirm": "Xác nhận"
+          }
+        }
+      }
+    },
+    "managequiz": {
+      "quiz": {
+        "titleCordion": "Bài thi",
+        "title": "Thêm bài thi mới",
+        "placeholder": {
+          "name": "Tên bài thi",
+          "description": "Mô tả",
+          "select": "Độ khó..."
+        },
+        "quizname": "Tên bài thi",
+        "quizdescription": "Mô tả",
+        "uploadImage": "Tải hình ảnh",
+        "btn": "Tạo mới"
+      },
+      "listquiz": {
+        "titleCordion": "Danh sách bài thi",
+        "tableQuiz": {
+          "name": "Tên bài thi",
+          "description": "Mô tả",
+          "type": "Loại",
+          "action": "Hành động",
+          "btn": {
+            "update": "Cập nhật",
+            "delete": "Xóa"
+          }
+        },
+        "modal": {
+          "update": {
+            "title": "Cập nhật bài thi",
+            "name": "Tên bài thi",
+            "description": "Mô tả bài thi",
+            "difficulty": {
+              "title": "Độ khó",
+              "EASY": "Dễ",
+              "MEDIUM": "Trung bình",
+              "HARD": "Khó"
+            },
+            "uploadImage": "Tải hình ảnh",
+            "preview": "Hiện hình ảnh",
+            "btn": {
+              "close": "Đóng",
+              "save": "Lưu"
+            }
+          },
+          "delete": {
+            "title": "Xoá bài thi",
+            "text": "Bạn chắc chắn có muốn xóa bài thi này không",
+            "btn": {
+              "close": "Đóng",
+              "confirm": "Xác nhận"
+            }
+          }
+        }
+      },
+      "updateQuiz": {
+        "titleCordion": "Cập nhật câu hỏi và câu trả lời",
+        "title": "Quản lí câu hỏi",
+        "select": "Chọn bài thi",
+        "question": {
+          "label": "Thêm câu hỏi",
+          "text1": "Câu hỏi",
+          "text2": " và mô tả",
+          "answers": {
+            "label": "Câu trả lời"
+          },
+          "btn": "Lưu"
+        }
+      },
+      "assignQuiz": {
+        "titleCordion": "Gàn bài thi cho người dùng",
+        "selectQuiz": "Chọn bài thi",
+        "selectUser": "Chọn người dùng",
+        "btn": "Gán"
+      }
+    }
   }
 }

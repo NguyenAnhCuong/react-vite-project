@@ -3,9 +3,11 @@ import { getAllQuizforAdmin } from "../../../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import ModalUpdateQuiz from "./ModalUpdateQuiz";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
+import { useTranslation } from "react-i18next";
 
 const QuizTable = (props) => {
   const [listQuiz, setListQuiz] = useState([]);
+  const { t } = useTranslation();
 
   const [dataUpdateQuiz, setDataUpdateQuiz] = useState({});
   const [dataDeleteQuiz, setDataDeleteQuiz] = useState({});
@@ -43,10 +45,14 @@ const QuizTable = (props) => {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
-            <th scope="col">Action</th>
+            <th scope="col">{t("admin.managequiz.listquiz.tableQuiz.name")}</th>
+            <th scope="col">
+              {t("admin.managequiz.listquiz.tableQuiz.description")}
+            </th>
+            <th scope="col">{t("admin.managequiz.listquiz.tableQuiz.type")}</th>
+            <th scope="col">
+              {t("admin.managequiz.listquiz.tableQuiz.action")}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -64,13 +70,13 @@ const QuizTable = (props) => {
                       className="btn btn-danger mx-2"
                       onClick={() => handleUpdateQuiz(q)}
                     >
-                      Update
+                      {t("admin.managequiz.listquiz.tableQuiz.btn.update")}
                     </button>
                     <button
                       className="btn btn-warning mx-2"
                       onClick={() => handleDeleteQuiz(q)}
                     >
-                      Delete
+                      {t("admin.managequiz.listquiz.tableQuiz.btn.delete")}
                     </button>
                   </td>
                 </tr>

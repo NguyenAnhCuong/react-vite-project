@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const ListUser = (props) => {
   const { listUser, setListUser } = props;
+  const { t } = useTranslation();
 
   return (
     <>

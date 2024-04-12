@@ -10,8 +10,10 @@ import {
 import ModalUpdateUser from "./ModalUpdateUser";
 import ModalDeleteUser from "./ModalDeleteUser";
 import ListUserPaginate from "./ListUserPaginate";
+import { useTranslation } from "react-i18next";
 
 const ManageUser = (props) => {
+  const { t } = useTranslation();
   const LIMIT_USER = 5;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,7 +64,7 @@ const ManageUser = (props) => {
 
   return (
     <div className="manageuser-container">
-      <div className="title">Manage User</div>
+      <div className="title">{t("admin.manageuser.title")}</div>
       <div className="users-content">
         <div className="btn-add-new-user">
           <button
@@ -73,7 +75,7 @@ const ManageUser = (props) => {
               style={{ margin: "2px", marginRight: "5px" }}
               size={"1.1rem"}
             />
-            Add New User
+            {t("admin.manageuser.btnAddNew")}
           </button>
         </div>
 

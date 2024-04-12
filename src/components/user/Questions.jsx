@@ -1,9 +1,11 @@
 import _ from "lodash";
 import { useState } from "react";
 import ModalPreviewImage3 from "./RigthContent/ModalPreviewImage";
+import { useTranslation } from "react-i18next";
 
 const Questions = (props) => {
   const { listQuiz, currQuiz } = props;
+  const { t } = useTranslation();
   const [showModalPreviewImage, setShowModalPreviewImage] = useState(false);
 
   if (_.isEmpty(listQuiz)) {
@@ -26,7 +28,8 @@ const Questions = (props) => {
         <div className="quiz-image"></div>
       )}
       <div className="question">
-        Question {currQuiz + 1}: {listQuiz.questionDecription}?
+        {t("detailQuiz.questions.question")} {currQuiz + 1}:{" "}
+        {listQuiz.questionDecription}?
       </div>
       <div className="answers">
         {listQuiz.answers &&

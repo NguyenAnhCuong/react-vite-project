@@ -49,5 +49,196 @@
       "create": "Create my account",
       "backhome": "Go to Home Page"
     }
+  },
+  "listquiz": {
+    "quizTitle": "Quiz",
+    "button": "Start Now",
+    "noQuiz": "You don't have any quiz now"
+  },
+  "detailQuiz": {
+    "quizTitle": "Quiz",
+    "button": {
+      "prev": "Prev",
+      "next": "Next",
+      "finish": "Finish"
+    },
+    "questions": {
+      "question": "Question"
+    }
+  },
+  "modal": {
+    "result": {
+      "title": "Result The Quiz",
+      "text1": "Total Questions",
+      "text2": "Total Correct Answer",
+      "close": "Close",
+      "show": "Show Answers"
+    }
+  },
+  "admin": {
+    "setting": {
+      "profile": "Profile",
+      "logout": "Log Out"
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "title": "Manage",
+      "manageuser": "Manage User",
+      "managequiz": "Manage Quiz",
+      "managequestion": "Manage Question",
+      "sourcecode": "Source code"
+    },
+    "dashboard": {
+      "title": "Analytics Dashboard",
+      "user": "Total Users",
+      "quiz": "Total Quizzes",
+      "questions": "Total Questions",
+      "answers": "Total Answers"
+    },
+    "manageuser": {
+      "title": "Manage User",
+      "btnAddNew": "Add New User",
+      "userPaginate": {
+        "username": "Username",
+        "email": "Email",
+        "role": "Role",
+        "action": "Action",
+        "btn": {
+          "view": "View",
+          "update": "Update",
+          "delete": "Delete"
+        },
+        "noData": "Not Found Data"
+      },
+      "modal": {
+        "create": {
+          "title": "Add New User",
+          "email": "Email address",
+          "password": "Password",
+          "username": "Username",
+          "role": {
+            "title": "Role",
+            "user": "User",
+            "admin": "Admin"
+          },
+          "uploadImage": "Upload File Image",
+          "preview": "Preview Image",
+          "placeholder": {
+            "email": "Enter email",
+            "password": "Password",
+            "username": "Enter username"
+          },
+          "btn": {
+            "close": "Close",
+            "save": "Save"
+          }
+        },
+        "update": {
+          "title": "Update A User",
+          "email": "Email address",
+          "password": "Password",
+          "username": "Username",
+          "role": {
+            "title": "Role",
+            "user": "User",
+            "admin": "Admin"
+          },
+          "uploadImage": "Upload File Image",
+          "preview": "Preview Image",
+          "placeholder": {
+            "email": "Enter email",
+            "password": "Password",
+            "username": "Enter username"
+          },
+          "btn": {
+            "close": "Close",
+            "save": "Save Changes"
+          }
+        },
+        "delete": {
+          "title": "Delete A User",
+          "text": "Are you sure to delete this User",
+          "btn": {
+            "close": "Close",
+            "confirm": "Confirm"
+          }
+        }
+      }
+    },
+    "managequiz": {
+      "quiz": {
+        "titleCordion": "Manage Quizzes",
+        "title": "Add New Quiz",
+        "placeholder": {
+          "name": "Quiz Name",
+          "description": "Description",
+          "select": "Quiz difficult..."
+        },
+        "quizname": "Quiz Name",
+        "quizdescription": "Description",
+        "uploadImage": "Upload Image",
+        "btn": "Create New"
+      },
+      "listquiz": {
+        "titleCordion": "List Quiz",
+        "tableQuiz": {
+          "name": "Name",
+          "description": "Description",
+          "type": "Type",
+          "action": "Action",
+          "btn": {
+            "update": "Update",
+            "delete": "Delete"
+          }
+        },
+        "modal": {
+          "update": {
+            "title": "Update A Quiz",
+            "name": "Quiz Name",
+            "description": "Quiz Description",
+            "difficulty": {
+              "title": "Difficulty",
+              "EASY": "EASY",
+              "MEDIUM": "MEDIUM",
+              "HARD": "HARD"
+            },
+            "uploadImage": "Upload File Image",
+            "preview": "Preview Image",
+            "btn": {
+              "close": "Close",
+              "save": "Save Changes"
+            }
+          },
+          "delete": {
+            "title": "Delete A Quiz",
+            "text": "Are you sure to delete this Quiz",
+            "btn": {
+              "close": "Close",
+              "confirm": "Confirm"
+            }
+          }
+        }
+      },
+      "updateQuiz": {
+        "titleCordion": "Update Question And Answer",
+        "title": "Manage Question",
+        "select": "Select Quiz",
+        "question": {
+          "label": "Add Question",
+          "text1": "Quesiton",
+          "text2": "'s Description",
+          "answers": {
+            "label": "Answer"
+          },
+          "btn": "Save Question"
+        }
+      },
+      "assignQuiz": {
+        "titleCordion": "Asign Quiz To User",
+        "selectQuiz": "Select Quiz",
+        "selectUser": "Select User",
+        "btn": "Assign"
+      }
+    }
   }
 }

@@ -8,6 +8,7 @@ import Questions from "./Questions";
 import { toast } from "react-toastify";
 import ModalResult from "./ModalResult";
 import RightContent from "./RigthContent/RightContent";
+import { useTranslation } from "react-i18next";
 
 const DetailQuiz = (props) => {
   const params = useParams();
@@ -15,6 +16,7 @@ const DetailQuiz = (props) => {
   const location = useLocation();
   const [listQuiz, setListQuiz] = useState([]);
   const [currQuiz, setCurrQuiz] = useState(0);
+  const { t } = useTranslation();
 
   const [showModalResult, setShowModalResult] = useState(false);
   const [dataModalResult, setDataModalResult] = useState({});
@@ -123,7 +125,7 @@ const DetailQuiz = (props) => {
         <div className="detail-quiz-container">
           <div className="left-content">
             <div className="title">
-              Quiz {quizId}: {location?.state?.quizTitle}
+              {t("detailQuiz.quizTitle")} {quizId}: {location?.state?.quizTitle}
             </div>
             <hr />
             <div className="quiz-body">
@@ -140,19 +142,20 @@ const DetailQuiz = (props) => {
             </div>
             <div className="footer">
               <button className="btn btn-primary" onClick={() => handlePrev()}>
-                Prev
+                {t("detailQuiz.button.prev")}
               </button>
               <button
                 className="btn btn-secondary"
                 onClick={() => handleNext()}
               >
-                Next
+                {t("detailQuiz.button.next")}
               </button>
               <button
                 className="btn btn-warning"
+                style={{ width: "100px" }}
                 onClick={() => handleFinish()}
               >
-                Finish
+                {t("detailQuiz.button.finish")}
               </button>
             </div>
           </div>
