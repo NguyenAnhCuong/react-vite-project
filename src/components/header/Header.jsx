@@ -9,6 +9,8 @@ import { LogOut } from "../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import Languages from "./Languages";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import Profile from "./Profile";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ const Header = () => {
   const account = useSelector((state) => state.user.account);
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   const { t } = useTranslation();
+  const [showModalProfile, setShowModalProfile] = useState(false);
 
   const handleLogOut = async () => {
     let res = await LogOut(account.email, account.refresh_token);
@@ -29,58 +32,61 @@ const Header = () => {
   };
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container>
-        <NavLink to="/" className={"navbar-brand"}>
-          React-Vite
-        </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <NavLink to={"/"} className="nav-link">
-              {t("header.page.home")}
-            </NavLink>
-            <NavLink to={"/user"} className="nav-link">
-              {t("header.page.user")}
-            </NavLink>
-            <NavLink to={"/admin"} className="nav-link">
-              {t("header.page.admin")}
-            </NavLink>
-          </Nav>
-          <Nav>
-            {isAuthenticated === false ? (
-              <>
-                <button
-                  className="btn btn-success mx-3"
-                  onClick={() => navigate("/login")}
+    <>
+      <Navbar expand="lg" className="bg-body-tertiary">
+        <Container>
+          <NavLink to="/" className={"navbar-brand"}>
+            React-Vite
+          </NavLink>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <NavLink to={"/"} className="nav-link">
+                {t("header.page.home")}
+              </NavLink>
+              <NavLink to={"/user"} className="nav-link">
+                {t("header.page.user")}
+              </NavLink>
+              <NavLink to={"/admin"} className="nav-link">
+                {t("header.page.admin")}
+              </NavLink>
+            </Nav>
+            <Nav>
+              {isAuthenticated === false ? (
+                <>
+                  <button
+                    className="btn btn-success mx-3"
+                    onClick={() => navigate("/login")}
+                  >
+                    {t("header.auth.login")}
+                  </button>
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => navigate("/register")}
+                  >
+                    {t("header.auth.signup")}
+                  </button>
+                </>
+              ) : (
+                <NavDropdown
+                  title={t("header.setting.setting")}
+                  id="basic-nav-dropdown"
                 >
-                  {t("header.auth.login")}
-                </button>
-                <button
-                  className="btn btn-dark"
-                  onClick={() => navigate("/register")}
-                >
-                  {t("header.auth.signup")}
-                </button>
-              </>
-            ) : (
-              <NavDropdown
-                title={t("header.setting.setting")}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item>
-                  {t("header.setting.profile")}
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => handleLogOut()}>
-                  {t("header.setting.logout")}
-                </NavDropdown.Item>
-              </NavDropdown>
-            )}
-            <Languages />
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+                  <NavDropdown.Item onClick={() => setShowModalProfile(true)}>
+                    {t("header.setting.profile")}
+                  </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => handleLogOut()}>
+                    {t("header.setting.logout")}
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
+              <Languages />
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <Profile show={showModalProfile} setShow={setShowModalProfile} />
+    </>
   );
 };
 export default Header;

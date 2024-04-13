@@ -73,6 +73,38 @@
       "text2": "Tổng câu trả lời đúng",
       "close": "Đóng",
       "show": "Xem câu trả lời"
+    },
+    "profile": {
+      "title": "Quản lí thông tin người dùng",
+      "userInfo": "Thông tin người dùng",
+      "changePass": "Đổi mật khẩu",
+      "history": "Lịch sử",
+      "tabs": {
+        "userInfo": {
+          "name": "Tên người dùng",
+          "role": {
+            "title": "Vai trò",
+            "user": "Người dùng",
+            "admin": "Quản trị"
+          },
+          "uploadImage": "Tải hình ảnh",
+          "preview": "Hiện hình ảnh",
+          "btn": "Cập nhật"
+        },
+        "changePass": {
+          "currPass": "Mật khẩu hiện tại",
+          "newPass": "Mật khẩu mới",
+          "confirmPass": "Xác nhận mật khẩu",
+          "btn": "Cập nhật"
+        },
+        "history": {
+          "name": "Tên bài thi",
+          "totalQuestion": "Tổng câu hỏi",
+          "totalCorrect": "Tổng câu trả lời đúng",
+          "date": "Ngày",
+          "noData": "Không có dữ liệu"
+        }
+      }
     }
   },
   "admin": {
@@ -234,7 +266,7 @@
         }
       },
       "assignQuiz": {
-        "titleCordion": "Gàn bài thi cho người dùng",
+        "titleCordion": "Gán bài thi cho người dùng",
         "selectQuiz": "Chọn bài thi",
         "selectUser": "Chọn người dùng",
         "btn": "Gán"

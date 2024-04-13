@@ -7,6 +7,8 @@ import QuizTable from "./QuizTable";
 import Accordion from "react-bootstrap/Accordion";
 import UpdateQA from "./UpdateQ&A";
 import AssignQuiz from "./AssignQuiz";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import { useTranslation } from "react-i18next";
 
 const options = [
@@ -16,6 +18,7 @@ const options = [
 ];
 
 const ManageQuiz = () => {
+  const [key, setKey] = useState("manageQuiz");
   const inputRef = useRef(null);
   const { t } = useTranslation();
 
@@ -51,7 +54,7 @@ const ManageQuiz = () => {
 
   return (
     <div className="quiz-container">
-      <Accordion defaultActiveKey="0" className="mx-3">
+      {/* <Accordion defaultActiveKey="0" className="mx-3">
         <Accordion.Item eventKey="0">
           <Accordion.Header>
             <div className="title">
@@ -142,14 +145,103 @@ const ManageQuiz = () => {
         <Accordion.Item eventKey="3">
           <Accordion.Header>
             <div className="title">
-              {t("admin.managequiz.updateQuiz.titleCordion")}
+              {t("admin.managequiz.assignQuiz.titleCordion")}
             </div>
           </Accordion.Header>
           <Accordion.Body>
             <AssignQuiz />
           </Accordion.Body>
         </Accordion.Item>
-      </Accordion>
+      </Accordion> */}
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+        justify
+      >
+        <Tab
+          eventKey="manageQuiz"
+          title={t("admin.managequiz.quiz.titleCordion")}
+        >
+          <div className="add-new">
+            <fieldset className="border rounded-3 p-3">
+              <legend className="float-none w-auto px-3">
+                {t("admin.managequiz.quiz.title")}
+              </legend>
+              <div className="form-floating mb-3">
+                <input
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder={t("admin.managequiz.quiz.placeholder.name")}
+                />
+                <label>{t("admin.managequiz.quiz.quizname")}</label>
+              </div>
+              <div className="form-floating">
+                <input
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  type="text"
+                  className="form-control"
+                  placeholder={t(
+                    "admin.managequiz.quiz.placeholder.description"
+                  )}
+                />
+                <label>{t("admin.managequiz.quiz.quizdescription")}</label>
+              </div>
+              <div className="select-difficult my-3">
+                <Select
+                  defaultValue={type}
+                  onChange={setType}
+                  options={options}
+                  placeholder={t("admin.managequiz.quiz.placeholder.select")}
+                />
+              </div>
+              <div className="more-actions form-group">
+                <label className="mb-1">
+                  {t("admin.managequiz.quiz.uploadImage")}
+                </label>
+                <input
+                  ref={inputRef}
+                  onChange={(e) => handleChangeFile(e)}
+                  type="file"
+                  className="form-control"
+                />
+              </div>
+              <div className="mt-3">
+                <button
+                  className="btn btn-warning"
+                  onClick={() => handleCreateNewQuiz()}
+                >
+                  {t("admin.managequiz.quiz.btn")}
+                </button>
+              </div>
+            </fieldset>
+          </div>
+        </Tab>
+        <Tab
+          eventKey="QuizTable"
+          title={t("admin.managequiz.listquiz.titleCordion")}
+        >
+          <div className="list-detail">
+            <QuizTable />
+          </div>
+        </Tab>
+        <Tab
+          eventKey="UpdateQA"
+          title={t("admin.managequiz.updateQuiz.titleCordion")}
+        >
+          <UpdateQA />
+        </Tab>
+        <Tab
+          eventKey="assignQuiz"
+          title={t("admin.managequiz.assignQuiz.titleCordion")}
+        >
+          <AssignQuiz />
+        </Tab>
+      </Tabs>
     </div>
   );
 };

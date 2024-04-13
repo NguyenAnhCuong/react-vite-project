@@ -73,6 +73,38 @@
       "text2": "Total Correct Answer",
       "close": "Close",
       "show": "Show Answers"
+    },
+    "profile": {
+      "title": "Manage Profile User",
+      "userInfo": "User Info",
+      "changePass": "Change Password",
+      "history": "History",
+      "tabs": {
+        "userInfo": {
+          "name": "Username",
+          "role": {
+            "title": "Role",
+            "user": "User",
+            "admin": "Admin"
+          },
+          "uploadImage": "Upload Image",
+          "preview": "Preview Image",
+          "btn": "Update"
+        },
+        "changePass": {
+          "currPass": "Current Password",
+          "newPass": "New Password",
+          "confirmPass": "Confirm Password",
+          "btn": "Update"
+        },
+        "history": {
+          "name": "Quiz Name",
+          "totalQuestion": "Total Question",
+          "totalCorrect": "Total Correct",
+          "date": "Date",
+          "noData": "Not Found Data"
+        }
+      }
     }
   },
   "admin": {
