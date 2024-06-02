@@ -1,7 +1,8 @@
-import axios from "../utils/axiosClient.jsx";
+// import axios from "../utils/axiosClient.jsx";
+import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8081/",
+  baseURL: "http://localhost:23302/",
 });
 
 axios.interceptors.request.use(
