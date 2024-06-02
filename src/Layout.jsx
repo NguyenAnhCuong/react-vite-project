@@ -9,6 +9,7 @@ import ManageUser from "./components/admin/Manage/user/ManageUser";
 import AddNewUser from "./components/admin/Manage/user/AddNewUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import JobPage from "./components/user/JobPage";
 
 const Layout = () => {
   return (
@@ -17,6 +18,7 @@ const Layout = () => {
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
           <Route path="/user" element={<UserPage />} />
+          <Route path="/user/:id" element={<JobPage />} />
         </Route>
 
         <Route path="/admin" element={<Admin />}>

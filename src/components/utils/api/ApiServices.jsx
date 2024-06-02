@@ -13,7 +13,11 @@ const postCreateNewUser = (email, password, username, role, image) => {
 };
 
 const getListCompany = () => {
-  return axios.get("api/Company");
+  return axios.get("api/Company/GetAll");
 };
 
-export { postCreateNewUser, getListCompany };
+const getCompanyById = (companyId) => {
+  return axios.get(`api/Company/GetCompany/${companyId}`);
+};
+
+export { postCreateNewUser, getListCompany, getCompanyById };

@@ -62,10 +62,12 @@
   .main-container {
     /* flex: 1; 
     display: flex; */
-    height: 87vh;
+    height: 100vh;
+    // background-image: url("./assets/bg1.jpg");
+    background-color: #f1f5f9;
   }
 
-  .footer-container {
-    margin-top: auto;
-  }
+  // .footer-container {
+  //   margin-top: auto;
+  // }
 }

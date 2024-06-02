@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { getListCompany } from "../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import "./userPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const UserPage = () => {
   const [listCompany, setListCompany] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchListCompany();
@@ -51,7 +53,12 @@ const UserPage = () => {
                 <p className="card-text">
                   {truncateText(company.companyDescription, 50)}
                 </p>
-                <button className="btn btn-primary">Find Out</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate(`${company.companyId}`)}
+                >
+                  Find Out
+                </button>
               </div>
             </div>
           );

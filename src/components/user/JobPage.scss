@@ -1,0 +1,46 @@
+.c-info {
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  // border: 1px solid red;
+  .logo {
+    z-index: 999;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    text-align: center;
+    //   border-right: 1px dashed gray;
+  }
+  .detail {
+    margin: 15px 0px;
+    .c-name {
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .c-location {
+      font-size: 20px;
+    }
+    .c-phone {
+      font-size: 18px;
+    }
+  }
+}
+.c-description {
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 10px;
+  padding: 20px 0px;
+  .title {
+    font-size: 25px;
+    color: #1e40af;
+    font-weight: 600;
+  }
+  .content {
+    font-size: 20px;
+  }
+}
+.list-job {
+  margin-top: 30px;
+  background-color: white;
+}
