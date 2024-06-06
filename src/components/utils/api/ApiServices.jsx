@@ -19,5 +19,8 @@ const getListCompany = () => {
 const getCompanyById = (companyId) => {
   return axios.get(`api/Company/GetCompany/${companyId}`);
 };
+const getAllJob = () => {
+  return axios.get("api/Job/GetAll");
+};
 
-export { postCreateNewUser, getListCompany, getCompanyById };
+export { postCreateNewUser, getAllJob, getListCompany, getCompanyById };
