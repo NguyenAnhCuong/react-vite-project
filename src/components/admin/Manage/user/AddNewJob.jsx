@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const AddNewUser = (props) => {
+const AddNewJob = (props) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -76,4 +76,4 @@ const AddNewUser = (props) => {
     </>
   );
 };
-export default AddNewUser;
+export default AddNewJob;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./ManageUser.scss";
-import ModalCreateUser from "./ModalCreateUser";
-import ListUser from "./ListUser";
 import { FcPlus } from "react-icons/fc";
+import ModalCreateCompany from "./ModalCreateCompany";
+import ListCompany from "./ListCompany";
 
-const ManageUser = (props) => {
+const ManageCompany = (props) => {
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
 
   const handleCloseModalCreateUser = (value) => {
@@ -13,7 +13,7 @@ const ManageUser = (props) => {
 
   return (
     <div className="manageuser-container">
-      <div className="title">Manage User</div>
+      <div className="title">Manage Company</div>
       <div className="users-content">
         <div className="btn-add-new-user">
           <button
@@ -24,14 +24,14 @@ const ManageUser = (props) => {
               style={{ margin: "2px", marginRight: "5px" }}
               size={"1.1rem"}
             />
-            Add New User
+            Add New Company
           </button>
         </div>
 
         <div className="table-user container-fluid">
-          <ListUser />
+          <ListCompany />
         </div>
-        <ModalCreateUser
+        <ModalCreateCompany
           show={showModalCreateUser}
           // setShow={setShowModalCreateUser}
           setShow={handleCloseModalCreateUser}
@@ -40,4 +40,4 @@ const ManageUser = (props) => {
     </div>
   );
 };
-export default ManageUser;
+export default ManageCompany;

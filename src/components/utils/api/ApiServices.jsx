@@ -22,5 +22,27 @@ const getCompanyById = (companyId) => {
 const getAllJob = () => {
   return axios.get("api/Job/GetAll");
 };
+const postCompany = (
+  companyName,
+  companyDescription,
+  companyPhone,
+  logo,
+  location
+) => {
+  const form = new FormData();
+  form.append("companyName", companyName);
+  form.append("companyDescription", companyDescription);
+  form.append("companyPhone", companyPhone);
+  form.append("logo", logo);
+  form.append("location", location);
 
-export { postCreateNewUser, getAllJob, getListCompany, getCompanyById };
+  return axios.post("api/Company/PostCompany", form);
+};
+
+export {
+  postCreateNewUser,
+  getAllJob,
+  getListCompany,
+  getCompanyById,
+  postCompany,
+};

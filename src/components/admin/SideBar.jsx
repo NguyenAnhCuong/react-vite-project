@@ -46,11 +46,11 @@ const SideBar = (props) => {
               Dashboard
             </MenuItem>
             <SubMenu title="Manage" icon={<FaList />}>
-              <MenuItem onClick={() => navigate("addnewusers")}>
-                Add New User
-              </MenuItem>
               <MenuItem onClick={() => navigate("manageusers")}>
-                Mange User
+                Mange Company
+              </MenuItem>
+              <MenuItem onClick={() => navigate("addnewusers")}>
+                Add New Job
               </MenuItem>
             </SubMenu>
           </Menu>

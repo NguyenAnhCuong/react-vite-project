@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
 import FooterComponent from "./components/footer/FooterComponent";
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
         <Header />
       </div>
       <div className="main-container">
-        <Outlet />
+        <PerfectScrollbar>
+          <Outlet />
+        </PerfectScrollbar>
       </div>
       {/* <div className="footer-container">
         <FooterComponent />
