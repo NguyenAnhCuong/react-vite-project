@@ -61,9 +61,17 @@ const updateJob = (jobTitle, jobDescription, salary, deadline, companyId) => {
 
   return axios.put("api/Job/PostJob", form);
 };
+const deleteJob = (id) => {
+  return axios.delete(`/api/Job/Delete/${id}`);
+};
+const getJobById = (id) => {
+  return axios.get(`/api/Job/GetJob/${id}`);
+};
 
 export {
+  getJobById,
   postJob,
+  deleteJob,
   deleteCompany,
   postCreateNewUser,
   getAllJob,

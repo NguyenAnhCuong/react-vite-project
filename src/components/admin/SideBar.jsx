@@ -52,6 +52,9 @@ const SideBar = (props) => {
               <MenuItem onClick={() => navigate("addnewusers")}>
                 Add New Job
               </MenuItem>
+              <MenuItem onClick={() => navigate("deletejob")}>
+                Delete Job
+              </MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>

@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import JobPage from "./components/user/JobPage";
 import ManageCompany from "./components/admin/Manage/user/ManageCompany";
 import AddNewJob from "./components/admin/Manage/user/AddNewJob";
+import DeleteJob from "./components/admin/Manage/user/DeleteJob";
 
 const Layout = () => {
   return (
@@ -24,6 +25,7 @@ const Layout = () => {
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />
           <Route path={"addnewusers"} element={<AddNewJob />} />
+          <Route path={"deletejob"} element={<DeleteJob />} />
           <Route path={"manageusers"} element={<ManageCompany />} />
         </Route>
       </Routes>
