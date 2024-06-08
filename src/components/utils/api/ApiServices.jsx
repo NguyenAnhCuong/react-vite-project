@@ -38,8 +38,33 @@ const postCompany = (
 
   return axios.post("api/Company/PostCompany", form);
 };
+const deleteCompany = (id) => {
+  return axios.delete(`/api/Company/Delete/${id}`);
+};
+const postJob = (jobTitle, jobDescription, salary, deadline, companyId) => {
+  const form = new FormData();
+  form.append("jobTitle", jobTitle);
+  form.append("jobDescription", jobDescription);
+  form.append("salary", salary);
+  form.append("deadline", deadline);
+  form.append("companyId", companyId);
+
+  return axios.post("api/Job/PostJob", form);
+};
+const updateJob = (jobTitle, jobDescription, salary, deadline, companyId) => {
+  const form = new FormData();
+  form.append("jobTitle", jobTitle);
+  form.append("jobDescription", jobDescription);
+  form.append("salary", salary);
+  form.append("deadline", deadline);
+  form.append("companyId", companyId);
+
+  return axios.put("api/Job/PostJob", form);
+};
 
 export {
+  postJob,
+  deleteCompany,
   postCreateNewUser,
   getAllJob,
   getListCompany,

@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { getListCompany } from "../../../utils/api/ApiServices";
+import ModalViewCompany from "./ModalViewCompany";
 
 const ListCompany = (props) => {
-  const [listCompany, setListCompany] = useState([]);
+  const { listCompany } = props;
 
-  useEffect(() => {
-    fetchListCompany();
-  }, []);
-
-  const fetchListCompany = async () => {
-    const res = await getListCompany();
-    if (res && res.data && res.data.ec === 0) {
-      setListCompany(res.data.dt);
-    }
-  };
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) {
       return text;
@@ -42,13 +33,24 @@ const ListCompany = (props) => {
                 <tr key={`company-${index}`}>
                   <td>{company.companyId}</td>
                   <td>{company.companyName}</td>
-                  <td>{truncateText(company.companyDescription, 100)}</td>
+                  <td>{company.companyDescription}</td>
+                  {/* <td>{truncateText(company.companyDescription, 100)}</td> */}
                   <td>{company.companyPhone}</td>
                   <td>{company.location}</td>
                   <td>
-                    <button className="btn btn-info mx-2 my-1">View</button>
+                    <button
+                      className="btn btn-info mx-2 my-1"
+                      onClick={() => props.handleViewCompany(company)}
+                    >
+                      View
+                    </button>
                     <button className="btn btn-warning mx-2">Update</button>
-                    <button className="btn btn-danger mx-2 my-1">Delete</button>
+                    <button
+                      className="btn btn-danger mx-2 my-1"
+                      onClick={() => props.handleDeleteCompany(company)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );

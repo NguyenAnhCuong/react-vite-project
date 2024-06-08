@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { postCompany } from "../../../utils/api/ApiServices";
-import { toast } from "react-toastify";
+import _ from "lodash";
 
-const ModalCreateCompany = (props) => {
-  const { show, setShow } = props;
-  // const [show, setShow] = useState(false);
+const ModalViewCompany = (props) => {
+  const { show, setShow, dataCompany } = props;
 
   const handleClose = () => {
     setShow(false);
@@ -15,15 +13,27 @@ const ModalCreateCompany = (props) => {
     setCompanyDescription("");
     setLocation("");
     setCompanyPhone("");
-    setImage("");
+    setImage(null);
     setPreviewImg("");
   };
+
+  useEffect(() => {
+    if (!_.isEmpty(dataCompany)) {
+      setCompanyName(dataCompany.companyName || "");
+      setCompanyDescription(dataCompany.companyDescription || "");
+      setLocation(dataCompany.location || "");
+      setCompanyPhone(dataCompany.companyPhone || "");
+      if (dataCompany.logo) {
+        setPreviewImg(dataCompany.logo);
+      }
+    }
+  }, [dataCompany]);
 
   const [companyName, setCompanyName] = useState("");
   const [companyDescription, setCompanyDescription] = useState("");
   const [companyPhone, setCompanyPhone] = useState("");
   const [location, setLocation] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [previewImg, setPreviewImg] = useState("");
 
   const handleUploadImage = (e) => {
@@ -33,32 +43,8 @@ const ModalCreateCompany = (props) => {
     }
   };
 
-  const handleSubmitCreateCompany = async () => {
-    //validate
-    //api
-    const res = await postCompany(
-      companyName,
-      companyDescription,
-      companyPhone,
-      image,
-      location
-    );
-    if (res && res.data.ec === 0) {
-      toast.success(res.data.em);
-      handleClose();
-      props.fetchListCompany();
-    } else {
-      toast.error(res.data.em);
-      return;
-    }
-  };
-
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal
         className="modal-add-user"
         show={show}
@@ -75,9 +61,9 @@ const ModalCreateCompany = (props) => {
               <div className="form-group col-8">
                 <label>Company Name</label>
                 <input
+                  disabled
                   type="text"
                   className="form-control"
-                  aria-describedby="emailHelp"
                   placeholder="Enter Name"
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
@@ -88,6 +74,7 @@ const ModalCreateCompany = (props) => {
               <div className="form-group col-12">
                 <label>Company Description</label>
                 <textarea
+                  disabled
                   placeholder="Enter Company Description"
                   className="form-control"
                   value={companyDescription}
@@ -101,6 +88,7 @@ const ModalCreateCompany = (props) => {
               <div className="form-group col-5">
                 <label>Company Phone</label>
                 <input
+                  disabled
                   type="number"
                   placeholder="Enter Phone"
                   className="form-control"
@@ -111,6 +99,7 @@ const ModalCreateCompany = (props) => {
               <div className="form-group col-5">
                 <label>Location</label>
                 <input
+                  disabled
                   type="text"
                   className="form-control"
                   placeholder="Enter Location"
@@ -125,6 +114,7 @@ const ModalCreateCompany = (props) => {
                 Upload Image
               </label>
               <input
+                disabled
                 type="file"
                 hidden
                 id="uploadImage"
@@ -133,7 +123,7 @@ const ModalCreateCompany = (props) => {
             </div>
             <div className="col-md-12 img-preview">
               {previewImg ? (
-                <img src={previewImg} />
+                <img src={previewImg} alt="Preview" />
               ) : (
                 <span>Preview Image</span>
               )}
@@ -144,12 +134,9 @@ const ModalCreateCompany = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateCompany()}>
-            Save Changes
-          </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 };
-export default ModalCreateCompany;
+export default ModalViewCompany;

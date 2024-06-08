@@ -5,7 +5,7 @@ import { getListCompany, postJob } from "../../../utils/api/ApiServices";
 import Select from "react-select";
 import { toast } from "react-toastify";
 
-const AddNewJob = (props) => {
+const UpdateJob = (props) => {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const [jobTitle, setJobTitle] = useState("");
@@ -146,4 +146,4 @@ const AddNewJob = (props) => {
     </>
   );
 };
-export default AddNewJob;
+export default UpdateJob;
