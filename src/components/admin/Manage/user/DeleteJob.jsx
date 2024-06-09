@@ -88,7 +88,7 @@ const DeleteJob = (props) => {
 
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
-          <Modal.Title>Add New Job</Modal.Title>
+          <Modal.Title>Delete Job</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>

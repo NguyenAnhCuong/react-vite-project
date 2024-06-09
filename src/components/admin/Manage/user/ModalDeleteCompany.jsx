@@ -74,7 +74,7 @@ const ModalDeleteCompany = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Delete Company</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>

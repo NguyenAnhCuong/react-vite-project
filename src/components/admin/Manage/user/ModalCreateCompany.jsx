@@ -67,7 +67,7 @@ const ModalCreateCompany = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Create New Company</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>

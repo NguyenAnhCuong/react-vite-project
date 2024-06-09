@@ -53,7 +53,7 @@ const ModalViewCompany = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>View Company</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
