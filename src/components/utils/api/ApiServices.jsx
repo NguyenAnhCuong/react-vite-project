@@ -67,8 +67,27 @@ const deleteJob = (id) => {
 const getJobById = (id) => {
   return axios.get(`/api/Job/GetJob/${id}`);
 };
+const updateCompany = (
+  companyId,
+  companyName,
+  companyDescription,
+  companyPhone,
+  logo,
+  location
+) => {
+  const form = new FormData();
+  form.append("companyId", companyId);
+  form.append("companyName", companyName);
+  form.append("companyDescription", companyDescription);
+  form.append("companyPhone", companyPhone);
+  form.append("logo", logo);
+  form.append("location", location);
+
+  return axios.put(`api/Company/Update/${companyId}`, form);
+};
 
 export {
+  updateCompany,
   getJobById,
   postJob,
   deleteJob,

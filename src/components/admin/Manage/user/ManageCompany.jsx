@@ -6,14 +6,17 @@ import ListCompany from "./ListCompany";
 import { getListCompany } from "../../../utils/api/ApiServices";
 import ModalViewCompany from "./ModalViewCompany";
 import ModalDeleteCompany from "./ModalDeleteCompany";
+import ModalUpdateCompany from "./ModalUpdateCompany";
 
 const ManageCompany = (props) => {
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [listCompany, setListCompany] = useState([]);
   const [dataView, setDataView] = useState({});
   const [dataDelete, setDataDelete] = useState({});
+  const [dataUpdate, setDataUpdate] = useState({});
   const [showModalView, setShowModalView] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
+  const [showModalUpadte, setShowModalUpdate] = useState(false);
 
   useEffect(() => {
     fetchListCompany();
@@ -33,6 +36,10 @@ const ManageCompany = (props) => {
   const handleViewCompany = (company) => {
     setShowModalView(true);
     setDataView(company);
+  };
+  const handleUpdateCompany = (company) => {
+    setShowModalUpdate(true);
+    setDataUpdate(company);
   };
   const handleDeleteCompany = (company) => {
     setShowModalDelete(true);
@@ -62,6 +69,7 @@ const ManageCompany = (props) => {
             listCompany={listCompany}
             handleViewCompany={handleViewCompany}
             handleDeleteCompany={handleDeleteCompany}
+            handleUpdateCompany={handleUpdateCompany}
           />
         </div>
         <ModalCreateCompany
@@ -74,6 +82,12 @@ const ManageCompany = (props) => {
           show={showModalView}
           setShow={setShowModalView}
           dataCompany={dataView}
+        />
+        <ModalUpdateCompany
+          fetchListCompany={fetchListCompany}
+          dataCompany={dataUpdate}
+          show={showModalUpadte}
+          setShow={setShowModalUpdate}
         />
         <ModalDeleteCompany
           fetchListCompany={fetchListCompany}

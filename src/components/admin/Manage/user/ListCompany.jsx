@@ -44,7 +44,12 @@ const ListCompany = (props) => {
                     >
                       View
                     </button>
-                    <button className="btn btn-warning mx-2">Update</button>
+                    <button
+                      className="btn btn-warning mx-2"
+                      onClick={() => props.handleUpdateCompany(company)}
+                    >
+                      Update
+                    </button>
                     <button
                       className="btn btn-danger mx-2 my-1"
                       onClick={() => props.handleDeleteCompany(company)}
