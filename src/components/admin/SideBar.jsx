@@ -50,7 +50,15 @@ const SideBar = (props) => {
                 Add New User
               </MenuItem>
               <MenuItem onClick={() => navigate("manageusers")}>
-                Mange User
+                Manage User
+              </MenuItem>
+            </SubMenu>
+            <SubMenu title="Projects" icon={<FaList />}>
+              <MenuItem onClick={() => navigate("manageprojects")}>
+                Manage Project
+              </MenuItem>
+              <MenuItem onClick={() => navigate("managetasks")}>
+                Manage Task
               </MenuItem>
             </SubMenu>
           </Menu>

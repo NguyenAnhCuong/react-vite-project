@@ -14,9 +14,9 @@ const App = () => {
       <div className="main-container">
         <Outlet />
       </div>
-      <div className="footer-container">
+      {/* <div className="footer-container">
         <FooterComponent />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,0 +1,46 @@
+<ProSidebar
+        image={tenko}
+        collapsed={collapsed}
+        toggled={toggled}
+        breakPoint="md"
+        onToggle={handleToggleSidebar}
+        style={{ height: "100vh" }} // Đảm bảo sidebar chiếm toàn bộ chiều cao
+      >
+        <SidebarHeader>
+          <div className="sidebar-header">
+            <div className="avata">
+              <img className="image" src={avata} />
+            </div>
+            <div>
+              <span className="username">React Vite</span>
+            </div>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <Menu iconShape="circle">
+            <MenuItem icon={<FaHeart />} onClick={() => navigate("/user")}>
+              Dashboard
+            </MenuItem>
+          </Menu>
+        </SidebarContent>
+        <SidebarFooter style={{ textAlign: "center" }}>
+          <div
+            className="sidebar-btn-wrapper"
+            style={{
+              padding: "20px 24px",
+            }}
+          >
+            <FaGithub size={"1.5rem"} />
+            <span
+              style={{
+                marginLeft: "5px",
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+              }}
+            >
+              Setting
+            </span>
+          </div>
+        </SidebarFooter>
+      </ProSidebar>

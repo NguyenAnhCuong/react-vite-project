@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-// import Header from "./components/header/Header";
 import App from "./App";
 import UserPage from "./components/user/userPage";
 import HomePage from "./components/Home/HomePage";
@@ -9,6 +8,10 @@ import ManageUser from "./components/admin/Manage/user/ManageUser";
 import AddNewUser from "./components/admin/Manage/user/AddNewUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ManageProject from "./components/admin/Manage/Project/ManageProject";
+import ManageTask from "./components/admin/Manage/Project/ManageTask";
+import UserDashboard from "./components/user/DashBoard/UserDashboard";
+import Project from "./components/user/Project/Project";
 
 const Layout = () => {
   return (
@@ -16,13 +19,17 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-          <Route path="/user" element={<UserPage />} />
         </Route>
-
+        <Route path="/user" element={<UserPage />}>
+          <Route index element={<UserDashboard />} />
+          <Route path={"project"} element={<Project />} />
+        </Route>
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />
           <Route path={"addnewusers"} element={<AddNewUser />} />
           <Route path={"manageusers"} element={<ManageUser />} />
+          <Route path={"manageprojects"} element={<ManageProject />} />
+          <Route path={"managetasks"} element={<ManageTask />} />
         </Route>
       </Routes>
       <ToastContainer

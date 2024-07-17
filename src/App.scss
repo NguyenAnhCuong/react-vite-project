@@ -62,7 +62,7 @@
   .main-container {
     /* flex: 1; 
     display: flex; */
-    height: 87vh;
+    height: calc(100vh - 60px);
   }
 
   .footer-container {
