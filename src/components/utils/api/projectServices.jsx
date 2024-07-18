@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../axiosClient";
 
 const postCreateNewUser = (email, password, username, role, image) => {
   const form = new FormData();

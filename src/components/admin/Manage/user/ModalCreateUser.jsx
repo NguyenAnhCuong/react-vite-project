@@ -2,10 +2,11 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
+import { postCreateNewUser } from "../../../utils/api/userServices";
+import { toast } from "react-toastify";
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
-  // const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
@@ -13,13 +14,13 @@ const ModalCreateUser = (props) => {
     setPassword("");
     setImage("");
     setRole("USEr");
-    setUsername("");
+    setName("");
     setPreviewImg("");
   };
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [role, setRole] = useState("USER");
   const [image, setImage] = useState("");
   const [previewImg, setPreviewImg] = useState("");
@@ -32,16 +33,18 @@ const ModalCreateUser = (props) => {
   };
 
   const handleSubmitCreateUser = async () => {
-    //validate
-    //api
+    const res = await postCreateNewUser(email, password, name, role, image);
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      handleClose();
+      await props.fetchListUser(props.currentPage);
+    } else {
+      toast.error(res.error);
+    }
   };
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal
         className="modal-add-user"
         show={show}
@@ -50,27 +53,27 @@ const ModalCreateUser = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Modal Create User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
             <div className="d-flex gap-5">
-              <div class="form-group col-5">
+              <div className="form-group col-5">
                 <label>Email address</label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div class="form-group col-5">
+              <div className="form-group col-5">
                 <label>Password</label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -79,19 +82,19 @@ const ModalCreateUser = (props) => {
             </div>
             <div className="d-flex gap-5">
               <div className="form-group col-5">
-                <label>UserName</label>
+                <label>User Name</label>
                 <input
                   type="text"
-                  placeholder="Enter UserName"
+                  placeholder="Enter Name"
                   className="form-control"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div class="form-group col-5">
+              <div className="form-group col-5">
                 <label>Role</label>
                 <select
-                  class="form-select"
+                  className="form-select"
                   onChange={(e) => setRole(e.target.value)}
                 >
                   <option value="USER">USER</option>
@@ -125,7 +128,7 @@ const ModalCreateUser = (props) => {
             Close
           </Button>
           <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Save Changes
+            Create New
           </Button>
         </Modal.Footer>
       </Modal>

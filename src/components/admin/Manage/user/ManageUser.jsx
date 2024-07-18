@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ManageUser.scss";
 import ModalCreateUser from "./ModalCreateUser";
 import ListUser from "./ListUser";
 import { FcPlus } from "react-icons/fc";
+import { getAllListUserPaginate } from "../../../utils/api/userServices";
+import { toast } from "react-toastify";
 
 const ManageUser = (props) => {
+  const limit = 5;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
+  const [listUser, setListUser] = useState([]);
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
 
   const handleCloseModalCreateUser = (value) => {
     setShowModalCreateUser(value);
+  };
+
+  useEffect(() => {
+    fetchListUser(1);
+  }, []);
+
+  const fetchListUser = async (page) => {
+    let res = await getAllListUserPaginate(limit, page);
+    if (res && res.EC === 0) {
+      setListUser(res.data);
+      setPageCount(res.totalPages);
+    } else {
+      return;
+    }
   };
 
   return (
@@ -29,12 +50,20 @@ const ManageUser = (props) => {
         </div>
 
         <div className="table-user container-fluid">
-          <ListUser />
+          <ListUser
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            pageCount={pageCount}
+            fetchListUser={fetchListUser}
+            listUser={listUser}
+          />
         </div>
         <ModalCreateUser
           show={showModalCreateUser}
-          // setShow={setShowModalCreateUser}
           setShow={handleCloseModalCreateUser}
+          fetchListUser={fetchListUser}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
     </div>
