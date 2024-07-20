@@ -40,32 +40,63 @@
 .read-the-docs {
   color: #888;
 }
-
-.app-container {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+.userpage-content {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  .header-container {
-    .navbar-nav {
-      .nav-link {
-        &.active {
-          color: #ff0000;
+  .userpage-sidebar {
+    border-right: 1px solid gray;
+    height: calc(100vh - 70px);
+    .sidebar-header {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid red;
+      .avata {
+        width: 50px;
+        height: 50px;
+        margin-left: 20px;
+        .image {
+          width: 100%;
         }
       }
+      .username {
+        font-size: 30px;
+      }
+    }
+    .sidebar-midder {
+      height: calc(100vh - 70px - 150px);
+      border: 1px solid red;
+      border-bottom: 1px solid gray;
+      text-align: center;
+      align-items: center;
+    }
+    .sidebar-footer {
+      text-align: center;
+      align-items: center;
     }
   }
-  .main-container {
-    /* flex: 1; 
-    display: flex; */
-    height: calc(100vh - 60px);
+  .userpage-rightside {
+    width: 100vw;
+    .userpage-main {
+    }
   }
-
-  .footer-container {
-    margin-top: auto;
+}
+.sidebar-component {
+  cursor: pointer;
+  display: flex;
+  gap: 20px;
+  margin: 5px 20px;
+  align-items: center;
+  height: 50px;
+  .icon {
+    margin-left: 20px;
+  }
+  .font-name {
+    font-size: 20px;
+  }
+  &:hover {
+    background-color: rgb(224, 241, 241);
+  }
+  &:active {
+    background-color: rgb(101, 228, 228) !important;
+    font-weight: 600px;
   }
 }

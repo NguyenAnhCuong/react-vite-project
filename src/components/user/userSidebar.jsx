@@ -30,7 +30,7 @@ const UserSidebar = (props) => {
           </div>
         </div>
         <div className="sidebar-midder">
-          <div className="sidebar-component" onClick={() => navigate("/user")}>
+          <div className="sidebar-component" onClick={() => navigate("/")}>
             <div>
               <MdDashboard size={"1.5rem"} className="icon" />
             </div>

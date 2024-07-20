@@ -1,23 +1,28 @@
 import { useState } from "react";
 import "./App.scss";
-import Layout from "./Layout";
-import Header from "./components/header/Header";
 import { Outlet } from "react-router-dom";
-import FooterComponent from "./components/footer/FooterComponent";
+import UserHeader from "./components/user/UserHeader";
+import UserSidebar from "./components/user/userSidebar";
 
 const App = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <div className="app-container">
-      <div className="header-container">
-        <Header />
+    <>
+      <div className="userpage-header">
+        <UserHeader />
       </div>
-      <div className="main-container">
-        <Outlet />
+      <div className="userpage-content">
+        <div className="userpage-sidebar">
+          <UserSidebar collapsed={collapsed} />
+        </div>
+        <div className="userpage-rightside">
+          <div className="userpage-main">
+            <Outlet />
+          </div>
+        </div>
       </div>
-      {/* <div className="footer-container">
-        <FooterComponent />
-      </div> */}
-    </div>
+    </>
   );
 };
 

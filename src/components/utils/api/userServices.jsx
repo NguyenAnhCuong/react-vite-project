@@ -15,4 +15,15 @@ const getAllListUserPaginate = (limit, page) => {
   return axios.get(`v1/api/users?limit=${limit}&page=${page}`);
 };
 
-export { postCreateNewUser, getAllListUserPaginate };
+const postUpdateUser = (id, name, email, image, role) => {
+  const form = new FormData();
+  form.append("id", id);
+  form.append("name", name);
+  form.append("email", email);
+  form.append("image", image);
+  form.append("role", role);
+
+  return axios.put("v1/api/users", form);
+};
+
+export { postCreateNewUser, getAllListUserPaginate, postUpdateUser };

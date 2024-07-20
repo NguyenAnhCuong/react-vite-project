@@ -37,7 +37,12 @@ const ListUser = (props) => {
                     <button className="btn btn-info mx-2" onClick={() => {}}>
                       View
                     </button>
-                    <button className="btn btn-warning mx-2" onClick={() => {}}>
+                    <button
+                      className="btn btn-warning mx-2"
+                      onClick={() => {
+                        props.handleShowModalUpdateUser(user);
+                      }}
+                    >
                       Update
                     </button>
                     <button className="btn btn-danger mx-2" onClick={() => {}}>
@@ -47,7 +52,7 @@ const ListUser = (props) => {
                 </tr>
               );
             })}
-          {listUser && listUser === 0 && (
+          {listUser && listUser.length === 0 && (
             <tr>
               <td colSpan={"5"}>No data</td>
             </tr>

@@ -19,9 +19,6 @@ const UserHeader = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink to={"/"} className="nav-link">
-              Home
-            </NavLink>
-            <NavLink to={"/user"} className="nav-link">
               User
             </NavLink>
             <NavLink to={"/admin"} className="nav-link">

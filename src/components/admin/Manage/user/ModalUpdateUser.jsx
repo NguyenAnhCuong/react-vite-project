@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
-import { postCreateNewUser } from "../../../utils/api/userServices";
+import { postUpdateUser } from "../../../utils/api/userServices";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
-const ModalCreateUser = (props) => {
-  const { show, setShow } = props;
+const ModalUpdateUser = (props) => {
+  const { show, setShow, dataUpdate } = props;
 
   const handleClose = () => {
     setShow(false);
     setEmail("");
     setPassword("");
     setImage("");
-    setRole("USEr");
+    setRole("USER");
     setName("");
     setPreviewImg("");
+    props.resetDataUpdate();
   };
 
   const [email, setEmail] = useState("");
@@ -25,6 +27,18 @@ const ModalCreateUser = (props) => {
   const [image, setImage] = useState("");
   const [previewImg, setPreviewImg] = useState("");
 
+  useEffect(() => {
+    if (!_.isEmpty(dataUpdate)) {
+      setEmail(dataUpdate.email);
+      setImage("");
+      setRole(dataUpdate.role);
+      setName(dataUpdate.name);
+      if (dataUpdate.image) {
+        setPreviewImg(`${dataUpdate.image}`);
+      }
+    }
+  }, [dataUpdate]);
+
   const handleUpload = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
       setPreviewImg(URL.createObjectURL(e.target.files[0]));
@@ -32,8 +46,8 @@ const ModalCreateUser = (props) => {
     }
   };
 
-  const handleSubmitCreateUser = async () => {
-    const res = await postCreateNewUser(email, password, name, role, image);
+  const handleSubmitUpdateUser = async () => {
+    const res = await postUpdateUser(dataUpdate.id, name, email, image, role);
     if (res && res.EC === 0) {
       toast.success(res.EM);
       handleClose();
@@ -53,7 +67,7 @@ const ModalCreateUser = (props) => {
         backdrop={"static"}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal Create User</Modal.Title>
+          <Modal.Title>Modal Update User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -128,12 +142,12 @@ const ModalCreateUser = (props) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-            Create New
+          <Button variant="primary" onClick={() => handleSubmitUpdateUser()}>
+            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
     </>
   );
 };
-export default ModalCreateUser;
+export default ModalUpdateUser;

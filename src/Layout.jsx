@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import App from "./App";
-import UserPage from "./components/user/userPage";
 import HomePage from "./components/Home/HomePage";
 import Admin from "./components/admin/Admin";
 import DashBoard from "./components/admin/Manage/dashboard/DashBoard";
@@ -18,9 +17,6 @@ const Layout = () => {
     <>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-        </Route>
-        <Route path="/user" element={<UserPage />}>
           <Route index element={<UserDashboard />} />
           <Route path={"project"} element={<Project />} />
         </Route>
