@@ -6,6 +6,7 @@ import { FcPlus } from "react-icons/fc";
 import { getAllListUserPaginate } from "../../../utils/api/userServices";
 import { toast } from "react-toastify";
 import ModalUpdateUser from "./ModalUpdateUser";
+import ModalDeleteUser from "./ModalDeleteUser";
 
 const ManageUser = (props) => {
   const limit = 5;
@@ -14,8 +15,10 @@ const ManageUser = (props) => {
   const [pageCount, setPageCount] = useState(0);
   const [listUser, setListUser] = useState([]);
   const [dataUpdate, setDataUpdate] = useState([]);
+  const [dataDelete, setDataDelete] = useState([]);
   const [showModalCreateUser, setShowModalCreateUser] = useState(false);
   const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
+  const [showModalDeleteUser, setShowModalDeleteUser] = useState(false);
 
   useEffect(() => {
     fetchListUser(1);
@@ -38,6 +41,11 @@ const ManageUser = (props) => {
   const handleShowModalUpdateUser = (user) => {
     setShowModalUpdateUser(true);
     setDataUpdate(user);
+  };
+
+  const handleShowModalDeleteUser = (user) => {
+    setShowModalDeleteUser(true);
+    setDataDelete(user);
   };
 
   const resetDataUpdate = () => {
@@ -69,6 +77,7 @@ const ManageUser = (props) => {
             fetchListUser={fetchListUser}
             listUser={listUser}
             handleShowModalUpdateUser={handleShowModalUpdateUser}
+            handleShowModalDeleteUser={handleShowModalDeleteUser}
           />
         </div>
         <ModalCreateUser
@@ -86,6 +95,14 @@ const ManageUser = (props) => {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           resetDataUpdate={resetDataUpdate}
+        />
+        <ModalDeleteUser
+          show={showModalDeleteUser}
+          setShow={setShowModalDeleteUser}
+          dataDelete={dataDelete}
+          fetchListUser={fetchListUser}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
     </div>

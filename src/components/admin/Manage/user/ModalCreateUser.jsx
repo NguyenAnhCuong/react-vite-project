@@ -39,6 +39,10 @@ const ModalCreateUser = (props) => {
       handleClose();
       await props.fetchListUser(props.currentPage);
     } else {
+      if (res.error == "Validation error") {
+        toast.error("Email is already exist");
+        return;
+      }
       toast.error(res.error);
     }
   };

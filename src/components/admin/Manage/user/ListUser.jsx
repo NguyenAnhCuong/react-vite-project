@@ -45,7 +45,12 @@ const ListUser = (props) => {
                     >
                       Update
                     </button>
-                    <button className="btn btn-danger mx-2" onClick={() => {}}>
+                    <button
+                      className="btn btn-danger mx-2"
+                      onClick={() => {
+                        props.handleShowModalDeleteUser(user);
+                      }}
+                    >
                       Delete
                     </button>
                   </td>
