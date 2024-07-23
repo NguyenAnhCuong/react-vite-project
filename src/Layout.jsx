@@ -11,6 +11,8 @@ import ManageProject from "./components/admin/Manage/Project/ManageProject";
 import ManageTask from "./components/admin/Manage/Project/ManageTask";
 import UserDashboard from "./components/user/DashBoard/UserDashboard";
 import Project from "./components/user/Project/Project";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
 
 const Layout = () => {
   return (
@@ -27,6 +29,8 @@ const Layout = () => {
           <Route path={"manageprojects"} element={<ManageProject />} />
           <Route path={"managetasks"} element={<ManageTask />} />
         </Route>
+        <Route path={"/login"} element={<Login />} />
+        <Route path={"/register"} element={<Register />} />
       </Routes>
       <ToastContainer
         position="top-right"

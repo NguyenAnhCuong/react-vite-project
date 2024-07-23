@@ -6,9 +6,9 @@ import {
 
 const INITIAL_STATE = {
   account: {
-    access_token: "",
-    refresh_token: "",
-    username: "",
+    token: "",
+    // refresh_token: "",
+    name: "",
     image: "",
     role: "",
     email: "",
@@ -21,12 +21,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         account: {
-          access_token: action?.payload?.DT?.access_token,
-          refresh_token: action?.payload?.DT?.refresh_token,
-          username: action?.payload?.DT?.username,
-          image: action?.payload?.DT?.image,
-          role: action?.payload?.DT?.role,
-          email: action?.payload?.DT?.email,
+          token: action?.payload?.token,
+          // refresh_token: action?.payload?.DT?.refresh_token,
+          name: action?.payload?.data?.name,
+          image: action?.payload?.data?.image,
+          role: action?.payload?.data?.role,
+          email: action?.payload?.data?.email,
         },
         isAuthenticated: true,
       };
@@ -34,9 +34,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         account: {
-          access_token: "",
-          refresh_token: "",
-          username: "",
+          token: "",
+          // refresh_token: "",
+          name: "",
           image: "",
           role: "",
           email: "",

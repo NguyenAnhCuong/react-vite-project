@@ -6,10 +6,11 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
+import { useDispatch, useSelector } from "react-redux";
 
 const UserSidebar = (props) => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const account = useSelector((state) => state.user.account);
 
   return (
     <ResizableBox
@@ -23,10 +24,12 @@ const UserSidebar = (props) => {
       <div>
         <div className="sidebar-header">
           <div className="avata">
-            <img className="image" src={avata} />
+            <img className="image" src={account.image ? avata : avata} />
           </div>
           <div>
-            <span className="username">React vite</span>
+            <span className="username">
+              {account.name ? account.name : "React Vite"}
+            </span>
           </div>
         </div>
         <div className="sidebar-midder">

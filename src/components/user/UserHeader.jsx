@@ -2,9 +2,29 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postLogOut } from "../utils/api/userServices";
+import { toast } from "react-toastify";
+import { doLogOut } from "../../redux/action/userAction";
 
 const UserHeader = (props) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const account = useSelector((state) => state.user.account);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+
+  const handleLogOut = async () => {
+    let res = await postLogOut(account.email);
+    if (res && res.EC === 0) {
+      toast.success(res.EM);
+      dispatch(doLogOut());
+      navigate("/login");
+    } else {
+      toast.error(res.EM);
+    }
+  };
+
   return (
     <Navbar
       expand="lg"
@@ -21,14 +41,24 @@ const UserHeader = (props) => {
             <NavLink to={"/"} className="nav-link">
               User
             </NavLink>
-            <NavLink to={"/admin"} className="nav-link">
-              Admin
-            </NavLink>
+            {account && account.role === "ADMIN" && (
+              <NavLink to={"/admin"} className="nav-link">
+                Admin
+              </NavLink>
+            )}
           </Nav>
           <Nav>
             <NavDropdown title="Setting" id="basic-nav-dropdown">
-              <NavDropdown.Item>Login</NavDropdown.Item>
-              <NavDropdown.Item>Log out</NavDropdown.Item>
+              <NavDropdown.Item
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Login
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => handleLogOut()}>
+                Log out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

@@ -1,0 +1,65 @@
+.login-container {
+  .header {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 5px 100px 0 100px;
+    button {
+      border: 1px solid;
+      padding: 3px 5px;
+      margin-left: 10px;
+      border-radius: 5px;
+      color: black;
+      background-color: rgb(224, 211, 211);
+    }
+  }
+  .title {
+    font-size: 30px;
+    padding: 20px 0px;
+    text-align: center;
+  }
+  .welcome {
+    font-size: 25px;
+    padding: 10px 0px;
+    text-align: center;
+  }
+  .content-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    input {
+      margin-bottom: 15px;
+      margin-top: 3px;
+    }
+    button {
+      width: 100%;
+      margin: 20px 0px;
+      height: 50px;
+      &:disabled {
+        background-color: rgba(196, 193, 193, 0.493);
+        color: gray;
+        cursor: no-drop;
+      }
+    }
+    .back {
+      cursor: pointer;
+    }
+    .loading-icon {
+      font-size: 14px;
+      margin-bottom: 3px;
+      margin-right: 5px;
+      color: rgb(18, 154, 207);
+      animation: spin 1s infinite linear;
+    }
+    @keyframes spin {
+      from {
+        transform: scale(1) rotate(0deg);
+      }
+      to {
+        transform: scale(1) rotate(360deg);
+      }
+    }
+  }
+}
