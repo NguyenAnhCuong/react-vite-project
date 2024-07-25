@@ -1,0 +1,58 @@
+.manage-project {
+  margin: 20px 50px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .feedback {
+      width: 200px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      padding-top: 5px;
+      &:hover {
+        background-color: rgb(161, 177, 177);
+        cursor: pointer;
+      }
+    }
+  }
+  .menu-list {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    .search-box {
+      position: relative;
+      width: 100%;
+      .search-input {
+        width: 100%;
+        padding-right: 30px;
+      }
+      .search-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+    }
+    .add-new-project {
+    }
+    .share {
+      font-size: 18px;
+      font-weight: 600;
+      width: 150px;
+      align-items: center;
+      text-align: center;
+      padding-top: 5px;
+      &:hover {
+        background-color: rgb(161, 177, 177);
+        cursor: pointer;
+      }
+    }
+  }
+  .project-table {
+  }
+}
