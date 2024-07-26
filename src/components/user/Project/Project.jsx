@@ -26,6 +26,11 @@ const Project = (props) => {
     }
   };
 
+  const handleShowModalDelete = (project) => {
+    setDataDelete(project);
+    setShowModalDelete(true);
+  };
+
   return (
     <div className="manage-project">
       <div className="header">
@@ -71,14 +76,21 @@ const Project = (props) => {
         </div>
       </div>
       <div className="project-table">
-        <ListProject listProject={listProject} />
+        <ListProject
+          listProject={listProject}
+          handleShowModalDelete={handleShowModalDelete}
+        />
       </div>
       <ModalAddNewProject
         show={showModalAddNew}
         setShow={setShowModalAddNew}
         fetchListProject={fetchListProject}
       />
-      <ModalDelete />
+      <ModalDelete
+        show={showModalDelete}
+        setShow={setShowModalDelete}
+        fetchListProject={fetchListProject}
+      />
     </div>
   );
 };

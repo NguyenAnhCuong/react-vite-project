@@ -14,4 +14,8 @@ const getListProject = () => {
   return axios.get("v1/api/projects");
 };
 
-export { postCreateNewProject, getListProject };
+const deleteProject = (id) => {
+  return axios.delete("v1/api/projects", { data: { id: id } });
+};
+
+export { postCreateNewProject, getListProject, deleteProject };

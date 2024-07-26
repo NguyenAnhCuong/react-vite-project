@@ -9,7 +9,6 @@ const ListProject = (props) => {
       <table className="table table-hover table-bordered my-4">
         <thead>
           <tr>
-            <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Start date</th>
             <th scope="col">End date</th>
@@ -22,7 +21,6 @@ const ListProject = (props) => {
             listProject.map((project, index) => {
               return (
                 <tr key={`project-${index + 1}`}>
-                  <td>{project.id}</td>
                   <td>{project.name}</td>
                   <td>{project.start_date}</td>
                   <td>{project.end_date}</td>
@@ -38,7 +36,12 @@ const ListProject = (props) => {
                     <button className="btn btn-warning mx-2" onClick={() => {}}>
                       Update
                     </button>
-                    <button className="btn btn-danger mx-2" onClick={() => {}}>
+                    <button
+                      className="btn btn-danger mx-2"
+                      onClick={() => {
+                        props.handleShowModalDelete(project);
+                      }}
+                    >
                       Delete
                     </button>
                   </td>
