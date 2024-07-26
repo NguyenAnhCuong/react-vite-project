@@ -5,15 +5,26 @@ import { VscFeedback } from "react-icons/vsc";
 import ListProject from "./ListProject";
 import { useEffect, useState } from "react";
 import { FcPlus } from "react-icons/fc";
+import { getListProject } from "../../utils/api/projectServices";
+import ModalAddNewProject from "./Modal/ModalAddNewProject";
+import ModalDelete from "./Modal/ModalDelete";
 
 const Project = (props) => {
   const [listProject, setListProject] = useState([]);
+  const [dataDelete, setDataDelete] = useState({});
+  const [showModalAddNew, setShowModalAddNew] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
 
   useEffect(() => {
     fetchListProject();
   }, []);
 
-  const fetchListProject = async () => {};
+  const fetchListProject = async () => {
+    let res = await getListProject();
+    if (res && res.EC === 0) {
+      setListProject(res.data);
+    }
+  };
 
   return (
     <div className="manage-project">
@@ -45,7 +56,10 @@ const Project = (props) => {
         </div>
         <div className="d-flex gap-2">
           <div className="add-new-project">
-            <button className="btn btn-success">
+            <button
+              className="btn btn-success"
+              onClick={() => setShowModalAddNew(true)}
+            >
               <FcPlus size={"1.5rem"} />
               <span style={{ marginLeft: "5px" }}>Add new project</span>
             </button>
@@ -59,6 +73,12 @@ const Project = (props) => {
       <div className="project-table">
         <ListProject listProject={listProject} />
       </div>
+      <ModalAddNewProject
+        show={showModalAddNew}
+        setShow={setShowModalAddNew}
+        fetchListProject={fetchListProject}
+      />
+      <ModalDelete />
     </div>
   );
 };

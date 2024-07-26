@@ -75,6 +75,7 @@
   .userpage-rightside {
     width: 100vw;
     .userpage-main {
+      height: calc(100vh - 50px);
     }
   }
 }

@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store.jsx";
 import { PersistGate } from "redux-persist/integration/react";
 import "react-resizable/css/styles.css";
+import "react-perfect-scrollbar/dist/css/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>

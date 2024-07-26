@@ -13,6 +13,7 @@ import UserDashboard from "./components/user/DashBoard/UserDashboard";
 import Project from "./components/user/Project/Project";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import ListTask from "./components/user/Project/Task/ListTask";
 
 const Layout = () => {
   return (
@@ -21,6 +22,7 @@ const Layout = () => {
         <Route path="/" element={<App />}>
           <Route index element={<UserDashboard />} />
           <Route path={"project"} element={<Project />} />
+          <Route path={"task"} element={<ListTask />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route index element={<DashBoard />} />

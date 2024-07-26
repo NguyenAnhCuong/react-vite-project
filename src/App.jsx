@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.scss";
+import PerfectScrollbar from "react-perfect-scrollbar";
 import { Outlet } from "react-router-dom";
 import UserHeader from "./components/user/UserHeader";
 import UserSidebar from "./components/user/userSidebar";
@@ -18,7 +19,9 @@ const App = () => {
         </div>
         <div className="userpage-rightside">
           <div className="userpage-main">
-            <Outlet />
+            <PerfectScrollbar>
+              <Outlet />
+            </PerfectScrollbar>
           </div>
         </div>
       </div>
