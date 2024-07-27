@@ -33,7 +33,12 @@ const ListProject = (props) => {
                     >
                       View List Task
                     </button>
-                    <button className="btn btn-warning mx-2" onClick={() => {}}>
+                    <button
+                      className="btn btn-warning mx-2"
+                      onClick={() => {
+                        props.handleShowModalUpdate(project);
+                      }}
+                    >
                       Update
                     </button>
                     <button

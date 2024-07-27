@@ -48,7 +48,7 @@ const UserHeader = (props) => {
             )}
           </Nav>
           <Nav>
-            <NavDropdown title="Setting" id="basic-nav-dropdown">
+            {isAuthenticated === false ? (
               <NavDropdown.Item
                 onClick={() => {
                   navigate("/login");
@@ -56,10 +56,13 @@ const UserHeader = (props) => {
               >
                 Login
               </NavDropdown.Item>
-              <NavDropdown.Item onClick={() => handleLogOut()}>
-                Log out
-              </NavDropdown.Item>
-            </NavDropdown>
+            ) : (
+              <NavDropdown title="Setting" id="basic-nav-dropdown">
+                <NavDropdown.Item onClick={() => handleLogOut()}>
+                  Log out
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

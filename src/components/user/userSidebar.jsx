@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 const UserSidebar = (props) => {
   const navigate = useNavigate();
   const account = useSelector((state) => state.user.account);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   return (
     <ResizableBox
@@ -28,7 +29,7 @@ const UserSidebar = (props) => {
           </div>
           <div>
             <span className="username">
-              {account.name ? account.name : "React Vite"}
+              {account.name ? account.name : "MTask"}
             </span>
           </div>
         </div>
@@ -41,17 +42,31 @@ const UserSidebar = (props) => {
               <span className="font-name">Dashboard</span>
             </div>
           </div>
-          <div
-            className="sidebar-component"
-            onClick={() => navigate("project")}
-          >
-            <div>
-              <FaList size={"1.5rem"} className="icon" />
+          {isAuthenticated === true ? (
+            <div
+              className="sidebar-component"
+              onClick={() => navigate("project")}
+            >
+              <div>
+                <FaList size={"1.5rem"} className="icon" />
+              </div>
+              <div>
+                <span className="font-name">Project</span>
+              </div>
             </div>
-            <div>
-              <span className="font-name">Project</span>
+          ) : (
+            <div
+              className="sidebar-component"
+              onClick={() => navigate("/login")}
+            >
+              <div>
+                <FaList size={"1.5rem"} className="icon" />
+              </div>
+              <div>
+                <span className="font-name">Project</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="sidebar-footer">
           <div className="sidebar-component">

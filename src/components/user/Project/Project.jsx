@@ -8,12 +8,15 @@ import { FcPlus } from "react-icons/fc";
 import { getListProject } from "../../utils/api/projectServices";
 import ModalAddNewProject from "./Modal/ModalAddNewProject";
 import ModalDelete from "./Modal/ModalDelete";
+import ModalUpdateProject from "./Modal/ModalUpdate";
 
 const Project = (props) => {
   const [listProject, setListProject] = useState([]);
+  const [dataUpdate, setDataUpdate] = useState({});
   const [dataDelete, setDataDelete] = useState({});
   const [showModalAddNew, setShowModalAddNew] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
+  const [showModalUpdate, setShowModalUpdate] = useState(false);
 
   useEffect(() => {
     fetchListProject();
@@ -26,9 +29,18 @@ const Project = (props) => {
     }
   };
 
+  const handleShowModalUpdate = (project) => {
+    setDataUpdate(project);
+    setShowModalUpdate(true);
+  };
+
   const handleShowModalDelete = (project) => {
     setDataDelete(project);
     setShowModalDelete(true);
+  };
+
+  const resetDataUpdate = () => {
+    setDataUpdate({});
   };
 
   return (
@@ -79,6 +91,7 @@ const Project = (props) => {
         <ListProject
           listProject={listProject}
           handleShowModalDelete={handleShowModalDelete}
+          handleShowModalUpdate={handleShowModalUpdate}
         />
       </div>
       <ModalAddNewProject
@@ -86,10 +99,18 @@ const Project = (props) => {
         setShow={setShowModalAddNew}
         fetchListProject={fetchListProject}
       />
+      <ModalUpdateProject
+        show={showModalUpdate}
+        setShow={setShowModalUpdate}
+        fetchListProject={fetchListProject}
+        dataUpdate={dataUpdate}
+        resetDataUpdate={resetDataUpdate}
+      />
       <ModalDelete
         show={showModalDelete}
         setShow={setShowModalDelete}
         fetchListProject={fetchListProject}
+        dataDelete={dataDelete}
       />
     </div>
   );
