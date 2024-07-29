@@ -14,12 +14,20 @@ import Project from "./components/user/Project/Project";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import ListTask from "./components/user/Project/Task/ListTask";
+import PrivateRoutes from "./components/routes/PrivateRoutes";
 
 const Layout = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route
+          path="/"
+          element={
+            <PrivateRoutes>
+              <App />
+            </PrivateRoutes>
+          }
+        >
           <Route index element={<UserDashboard />} />
           <Route path={"project"} element={<Project />} />
           <Route path={"task"} element={<ListTask />} />

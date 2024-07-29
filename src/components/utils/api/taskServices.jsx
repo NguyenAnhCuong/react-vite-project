@@ -1,14 +1,18 @@
 import axios from "../axiosClient";
 
-const postCreateNewUser = (email, password, username, role, image) => {
+const postCreateNewTask = (project_id, name, description, deadline, status) => {
   const form = new FormData();
-  form.append("email", email);
-  form.append("password", password);
-  form.append("username", username);
-  form.append("role", role);
-  form.append("userImage", image);
+  form.append("project_id", project_id);
+  form.append("name", name);
+  form.append("description", description);
+  form.append("deadline", deadline);
+  form.append("status", status);
 
-  return axios.post("api/v1/participant", form);
+  return axios.post("v1/api/tasks", form);
 };
 
-export { postCreateNewUser };
+const getListTask = (projectId) => {
+  return axios.get(`v1/api/tasks?id=${projectId}`);
+};
+
+export { postCreateNewTask, getListTask };

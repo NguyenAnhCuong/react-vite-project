@@ -21,13 +21,17 @@
       background-color: #f4f5f7;
       font-size: 18px;
       width: 300px;
-      height: 200px;
+      min-height: 200px;
       .title {
-        height: 40px;
+        height: 30%;
         padding: 5px 10px;
         &:hover {
           background-color: #e5e8f0;
         }
+      }
+      .content {
+        height: 70%;
+        padding: 5px 10px;
       }
     }
   }
