@@ -22,6 +22,7 @@
       font-size: 18px;
       width: 300px;
       min-height: 200px;
+      max-height: auto;
       .title {
         height: 30%;
         padding: 5px 10px;
@@ -32,6 +33,33 @@
       .content {
         height: 70%;
         padding: 5px 10px;
+        .task-child {
+          font-size: 18px;
+          position: relative;
+          height: 30px;
+          padding: 0px 10px;
+          &:hover {
+            background-color: #e5e8f0;
+          }
+          .trash-icon {
+            position: absolute;
+            margin-top: 5px;
+            right: 0px;
+            &:hover {
+              background-color: #5a72a1;
+              cursor: pointer;
+            }
+          }
+          .pen-icon {
+            position: absolute;
+            margin-top: 5px;
+            right: 30px;
+            &:hover {
+              background-color: #5a72a1;
+              cursor: pointer;
+            }
+          }
+        }
       }
     }
   }

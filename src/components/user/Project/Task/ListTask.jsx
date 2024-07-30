@@ -24,6 +24,10 @@ const ListTask = (props) => {
     }
   };
 
+  const handleUpdateTask = (task) => {};
+
+  const handleDeleteTask = (task) => {};
+
   return (
     <div className="task-container my-3">
       <div className="project-title">
@@ -48,7 +52,11 @@ const ListTask = (props) => {
         </button>
       </div>
       <div className="task-list mt-3">
-        <Task dataTask={dataTask} />
+        <Task
+          dataTask={dataTask}
+          handleUpdateTask={handleUpdateTask}
+          handleDeleteTask={handleDeleteTask}
+        />
       </div>
       <ModalCreateTask
         open={showModalCreateTask}

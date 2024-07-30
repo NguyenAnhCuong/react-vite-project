@@ -1,19 +1,93 @@
+import { FaTrashAlt, FaPen } from "react-icons/fa";
+
 const Task = (props) => {
-  const { dataTask } = props;
+  const { dataTask, editing } = props;
 
   return (
     <>
       <div className="l-child">
         <div className="title">To Do</div>
-        <div className="content"></div>
+        <div className="content">
+          {dataTask &&
+            dataTask.length > 0 &&
+            dataTask.map((task, index) => {
+              if (task.status === "pending") {
+                return (
+                  <div className="task-child" key={`task-${index + 1}`}>
+                    <span>{task.name}</span>
+                    <FaTrashAlt
+                      size={"1.2rem"}
+                      className="trash-icon"
+                      onClick={() => {
+                        props.handleUpdateTask(task);
+                      }}
+                    />
+                    <FaPen
+                      size={"1.2rem"}
+                      className="pen-icon"
+                      onClick={() => props.handleDeleteTask(task)}
+                    />
+                  </div>
+                );
+              }
+            })}
+        </div>
       </div>
       <div className="l-child">
         <div className="title">In progress</div>
-        <div className="content"></div>
+        <div className="content">
+          {dataTask &&
+            dataTask.length > 0 &&
+            dataTask.map((task, index) => {
+              if (task.status === "in_progress") {
+                return (
+                  <div className="task-child" key={`task-${index + 1}`}>
+                    <span>{task.name}</span>
+                    <FaTrashAlt
+                      size={"1.2rem"}
+                      className="trash-icon"
+                      onClick={() => {
+                        props.handleUpdateTask(task);
+                      }}
+                    />
+                    <FaPen
+                      size={"1.2rem"}
+                      className="pen-icon"
+                      onClick={() => props.handleDeleteTask(task)}
+                    />
+                  </div>
+                );
+              }
+            })}
+        </div>
       </div>
       <div className="l-child">
         <div className="title">Dones</div>
-        <div className="content"></div>
+        <div className="content">
+          {dataTask &&
+            dataTask.length > 0 &&
+            dataTask.map((task, index) => {
+              if (task.status === "completed") {
+                return (
+                  <div className="task-child" key={`task-${index + 1}`}>
+                    <span>{task.name}</span>
+                    <FaTrashAlt
+                      size={"1.2rem"}
+                      className="trash-icon"
+                      onClick={() => {
+                        props.handleUpdateTask(task);
+                      }}
+                    />
+                    <FaPen
+                      size={"1.2rem"}
+                      className="pen-icon"
+                      onClick={() => props.handleDeleteTask(task)}
+                    />
+                  </div>
+                );
+              }
+            })}
+        </div>
       </div>
     </>
   );
