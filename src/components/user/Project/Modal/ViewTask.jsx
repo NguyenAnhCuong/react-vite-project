@@ -13,12 +13,13 @@ import {
   IconButton,
   TextareaAutosize,
 } from "@mui/material";
-import { useState } from "react";
-import { postCreateNewTask } from "../../../utils/api/taskServices";
+import { useEffect, useState } from "react";
+import { putUpdateTask } from "../../../utils/api/taskServices";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
-const ModalCreateTask = (props) => {
-  const { open, setOpen, projectId } = props;
+const ViewTask = (props) => {
+  const { open, setOpen, dataViewTask } = props;
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -31,32 +32,23 @@ const ModalCreateTask = (props) => {
     return `${yyyy}-${mm}-${dd}`;
   });
 
+  useEffect(() => {
+    if (!_.isEmpty(dataViewTask)) {
+      setName(dataViewTask.name);
+      setDescription(dataViewTask.description);
+      setStatus(dataViewTask.status);
+      setDeadline(dataViewTask.deadline);
+    }
+  }, [dataViewTask]);
+
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleSubmitCreateTask = async () => {
-    let res = await postCreateNewTask(
-      projectId,
-      name,
-      description,
-      deadline,
-      status
-    );
-    if (res && res.EC === 0) {
-      toast.success(res.EM);
-      handleClose();
-      props.fetchListTask();
-    } else {
-      toast.error(res.errors);
-      return;
-    }
   };
 
   return (
     <>
       <Dialog open={open} onClose={handleClose} scroll="body">
-        <DialogTitle>Modal Create Task</DialogTitle>
+        <DialogTitle>View Task</DialogTitle>
         <DialogContent>
           <form>
             <div>
@@ -67,6 +59,7 @@ const ModalCreateTask = (props) => {
                   fullWidth
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  disabled
                 />
               </div>
             </div>
@@ -78,6 +71,7 @@ const ModalCreateTask = (props) => {
                   fullWidth
                   value={deadline}
                   onChange={(e) => setDeadline(e.target.value)}
+                  disabled
                 />
               </div>
               <div className="form-group col-5">
@@ -87,6 +81,7 @@ const ModalCreateTask = (props) => {
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     label="status"
+                    disabled
                   >
                     <MenuItem value="pending">PENDING</MenuItem>
                     <MenuItem value="in_progress">In progress</MenuItem>
@@ -98,6 +93,7 @@ const ModalCreateTask = (props) => {
             <div className="mt-4">
               <InputLabel>Description</InputLabel>
               <TextareaAutosize
+                disabled
                 className="form-control"
                 style={{ resize: "none", height: "100px" }}
                 value={description}
@@ -108,13 +104,10 @@ const ModalCreateTask = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          <Button onClick={handleSubmitCreateTask} autoFocus>
-            Submit
-          </Button>
         </DialogActions>
       </Dialog>
     </>
   );
 };
 
-export default ModalCreateTask;
+export default ViewTask;

@@ -22,7 +22,7 @@
       font-size: 18px;
       width: 300px;
       min-height: 200px;
-      max-height: auto;
+      max-height: 500px;
       .title {
         height: 30%;
         padding: 5px 10px;
@@ -31,8 +31,12 @@
         }
       }
       .content {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex-grow: 1;
+        overflow: auto;
         height: 70%;
-        padding: 5px 10px;
         .task-child {
           font-size: 18px;
           position: relative;
@@ -41,10 +45,13 @@
           &:hover {
             background-color: #e5e8f0;
           }
+          .t-name {
+            cursor: pointer;
+          }
           .trash-icon {
             position: absolute;
             margin-top: 5px;
-            right: 0px;
+            right: 5px;
             &:hover {
               background-color: #5a72a1;
               cursor: pointer;
@@ -53,7 +60,7 @@
           .pen-icon {
             position: absolute;
             margin-top: 5px;
-            right: 30px;
+            right: 35px;
             &:hover {
               background-color: #5a72a1;
               cursor: pointer;

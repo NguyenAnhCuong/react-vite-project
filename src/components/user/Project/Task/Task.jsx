@@ -14,19 +14,22 @@ const Task = (props) => {
               if (task.status === "pending") {
                 return (
                   <div className="task-child" key={`task-${index + 1}`}>
-                    <span>{task.name}</span>
-                    <FaTrashAlt
-                      size={"1.2rem"}
-                      className="trash-icon"
+                    <span
+                      className="t-name"
+                      onClick={() => props.handleViewTask(task)}
+                    >
+                      {task.name}
+                    </span>
+                    <span
                       onClick={() => {
-                        props.handleUpdateTask(task);
+                        props.handleDeleteTask(task);
                       }}
-                    />
-                    <FaPen
-                      size={"1.2rem"}
-                      className="pen-icon"
-                      onClick={() => props.handleDeleteTask(task)}
-                    />
+                    >
+                      <FaTrashAlt className="trash-icon" size={"1.2rem"} />
+                    </span>
+                    <span onClick={() => props.handleUpdateTask(task)}>
+                      <FaPen size={"1.2rem"} className="pen-icon" />
+                    </span>
                   </div>
                 );
               }
@@ -42,19 +45,22 @@ const Task = (props) => {
               if (task.status === "in_progress") {
                 return (
                   <div className="task-child" key={`task-${index + 1}`}>
-                    <span>{task.name}</span>
-                    <FaTrashAlt
-                      size={"1.2rem"}
-                      className="trash-icon"
+                    <span
+                      className="t-name"
+                      onClick={() => props.handleViewTask(task)}
+                    >
+                      {task.name}
+                    </span>
+                    <span
                       onClick={() => {
-                        props.handleUpdateTask(task);
+                        props.handleDeleteTask(task);
                       }}
-                    />
-                    <FaPen
-                      size={"1.2rem"}
-                      className="pen-icon"
-                      onClick={() => props.handleDeleteTask(task)}
-                    />
+                    >
+                      <FaTrashAlt className="trash-icon" size={"1.2rem"} />
+                    </span>
+                    <span onClick={() => props.handleUpdateTask(task)}>
+                      <FaPen size={"1.2rem"} className="pen-icon" />
+                    </span>
                   </div>
                 );
               }
@@ -70,19 +76,22 @@ const Task = (props) => {
               if (task.status === "completed") {
                 return (
                   <div className="task-child" key={`task-${index + 1}`}>
-                    <span>{task.name}</span>
-                    <FaTrashAlt
-                      size={"1.2rem"}
-                      className="trash-icon"
+                    <span
+                      className="t-name"
+                      onClick={() => props.handleViewTask(task)}
+                    >
+                      {task.name}
+                    </span>
+                    <span
                       onClick={() => {
-                        props.handleUpdateTask(task);
+                        props.handleDeleteTask(task);
                       }}
-                    />
-                    <FaPen
-                      size={"1.2rem"}
-                      className="pen-icon"
-                      onClick={() => props.handleDeleteTask(task)}
-                    />
+                    >
+                      <FaTrashAlt className="trash-icon" size={"1.2rem"} />
+                    </span>
+                    <span onClick={() => props.handleUpdateTask(task)}>
+                      <FaPen size={"1.2rem"} className="pen-icon" />
+                    </span>
                   </div>
                 );
               }

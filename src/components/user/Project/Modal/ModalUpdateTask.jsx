@@ -13,12 +13,13 @@ import {
   IconButton,
   TextareaAutosize,
 } from "@mui/material";
-import { useState } from "react";
-import { postCreateNewTask } from "../../../utils/api/taskServices";
+import { useEffect, useState } from "react";
+import { putUpdateTask } from "../../../utils/api/taskServices";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
-const ModalCreateTask = (props) => {
-  const { open, setOpen, projectId } = props;
+const ModalUpdateTask = (props) => {
+  const { open, setOpen, projectId, dataUpdateTask } = props;
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -31,17 +32,27 @@ const ModalCreateTask = (props) => {
     return `${yyyy}-${mm}-${dd}`;
   });
 
+  useEffect(() => {
+    if (!_.isEmpty(dataUpdateTask)) {
+      setName(dataUpdateTask.name);
+      setDescription(dataUpdateTask.description);
+      setStatus(dataUpdateTask.status);
+      setDeadline(dataUpdateTask.deadline);
+    }
+  }, [dataUpdateTask]);
+
   const handleClose = () => {
     setOpen(false);
   };
 
-  const handleSubmitCreateTask = async () => {
-    let res = await postCreateNewTask(
+  const handleSubmitTask = async () => {
+    let res = await putUpdateTask(
+      dataUpdateTask.id,
       projectId,
       name,
       description,
-      deadline,
-      status
+      status,
+      deadline
     );
     if (res && res.EC === 0) {
       toast.success(res.EM);
@@ -56,7 +67,7 @@ const ModalCreateTask = (props) => {
   return (
     <>
       <Dialog open={open} onClose={handleClose} scroll="body">
-        <DialogTitle>Modal Create Task</DialogTitle>
+        <DialogTitle>Modal Update Task</DialogTitle>
         <DialogContent>
           <form>
             <div>
@@ -108,7 +119,7 @@ const ModalCreateTask = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>
-          <Button onClick={handleSubmitCreateTask} autoFocus>
+          <Button onClick={handleSubmitTask} autoFocus>
             Submit
           </Button>
         </DialogActions>
@@ -117,4 +128,4 @@ const ModalCreateTask = (props) => {
   );
 };
 
-export default ModalCreateTask;
+export default ModalUpdateTask;
