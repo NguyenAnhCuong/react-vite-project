@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import Languages from "../header/Languages";
 import { useTranslation } from "react-i18next";
 
-const Register = (props) => {
+const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowpassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -36,7 +36,7 @@ const Register = (props) => {
       </div>
       <div className="title col-4 mx-auto">React Vite</div>
       <div className="Welcome col-4 mx-auto">
-        {t("registerpage.content.title")}??
+        {t("registerpage.content.title")}?
       </div>
       <div className="content-form col-3 mx-auto">
         <div className="form-group">

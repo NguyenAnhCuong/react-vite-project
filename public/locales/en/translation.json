@@ -30,7 +30,7 @@
       "signup": "Sign up"
     },
     "content": {
-      "title": "Hello,My Friend",
+      "title": "Welcome ",
       "password": "Password",
       "forgotpassword": "Forgot Password",
       "loginButton": "Log in to React Vite",

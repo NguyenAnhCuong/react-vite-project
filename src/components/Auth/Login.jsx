@@ -9,7 +9,7 @@ import { ImSpinner3 } from "react-icons/im";
 import Languages from "../header/Languages";
 import { useTranslation } from "react-i18next";
 
-const Login = (props) => {
+const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,7 +59,7 @@ const Login = (props) => {
       </div>
       <div className="title col-4 mx-auto">React Vite</div>
       <div className="Welcome col-4 mx-auto">
-        {t("loginpage.content.title")}??
+        {t("loginpage.content.title")}?
       </div>
       <div className="content-form col-3 mx-auto">
         <div className="form-group">
