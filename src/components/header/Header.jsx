@@ -5,12 +5,13 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { doLogOut } from "../../redux/action/userAction";
-import { LogOut } from "../utils/api/ApiServices";
+// import { LogOut } from "../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import Languages from "./Languages";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Profile from "./Profile";
+import "./header.scss";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -21,33 +22,35 @@ const Header = () => {
   const [showModalProfile, setShowModalProfile] = useState(false);
 
   const handleLogOut = async () => {
-    let res = await LogOut(account.email, account.refresh_token);
-    if (res && res.EC === 0) {
-      toast.success(res.EM);
-      dispatch(doLogOut());
-      navigate("/login");
-    } else {
-      toast.error(res.EM);
+    if (!account.email) {
+      toast.error("Invalid email");
+      return;
     }
+    toast.success("Logout success");
+    dispatch(doLogOut());
+    navigate("/login");
   };
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" className="bg-body-tertiary navbar-container">
         <Container>
           <NavLink to="/" className={"navbar-brand"}>
-            React-Vite
+            <span className="title">React</span>
+            <span className="title-hover" style={{ marginLeft: "5px" }}>
+              Vite
+            </span>
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavLink to={"/"} className="nav-link">
+            <Nav className="me-auto d-flex justify-content-center w-100">
+              <NavLink to={"/"} className="nav-link nav-item-custom mx-2">
                 {t("header.page.home")}
               </NavLink>
-              <NavLink to={"/user"} className="nav-link">
+              <NavLink to={"/user"} className="nav-link nav-item-custom mx-2">
                 {t("header.page.user")}
               </NavLink>
-              <NavLink to={"/admin"} className="nav-link">
+              <NavLink to={"/admin"} className="nav-link nav-item-custom mx-2">
                 {t("header.page.admin")}
               </NavLink>
             </Nav>
@@ -72,10 +75,10 @@ const Header = () => {
                   title={t("header.setting.setting")}
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item onClick={() => setShowModalProfile(true)}>
+                  <NavDropdown.Item className="dropdown-item-custom" onClick={() => setShowModalProfile(true)}>
                     {t("header.setting.profile")}
                   </NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => handleLogOut()}>
+                  <NavDropdown.Item className="dropdown-item-custom" onClick={() => handleLogOut()}>
                     {t("header.setting.logout")}
                   </NavDropdown.Item>
                 </NavDropdown>

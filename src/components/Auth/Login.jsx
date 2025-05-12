@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.scss";
 import { useNavigate } from "react-router-dom";
-import { postLogin } from "../utils/api/ApiServices";
+// import { postLogin } from "../utils/api/ApiServices";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { doLogin } from "../../redux/action/userAction";
@@ -29,16 +29,33 @@ const Login = () => {
     }
     //submit api
     setIsloading(true);
-    let res = await postLogin(email, password);
-    if (res && res.EC === 0) {
+    if (email === "admin@gmail.com" && password === "123456") {
+      let res = {
+        access_token: "",
+        refresh_token: "",
+        username: "admin",
+        image: "",
+        role: "ADMIN",
+        email: email,
+      };
       dispatch(doLogin(res));
-      toast.success(res.EM);
+      toast.success("Login success");
       setIsloading(false);
       navigate("/");
-    } else {
-      toast.error(res.EM);
+    }else {
+      toast.error("Invalid email or password");
       setIsloading(false);
     }
+    // let res = await postLogin(email, password);
+    // if (res && res.EC === 0) {
+    //   dispatch(doLogin(res));
+    //   toast.success(res.EM);
+    //   setIsloading(false);
+    //   navigate("/");
+    // } else {
+    //   toast.error(res.EM);
+    //   setIsloading(false);
+    // }
   };
 
   const handlePressEnter = (e) => {

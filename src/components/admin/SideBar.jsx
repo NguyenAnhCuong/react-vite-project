@@ -9,11 +9,9 @@ import {
   SidebarHeader,
 } from "react-pro-sidebar";
 import {
-  FaTachometerAlt,
   FaGem,
   FaList,
   FaGithub,
-  FaRegLaughWink,
   FaHeart,
 } from "react-icons/fa";
 import "react-pro-sidebar/dist/css/styles.css";

@@ -7,8 +7,9 @@ export const doLogin = (data) => {
     payload: data,
   };
 };
-export const doLogOut = (data) => {
+export const doLogOut = () => {
   return {
     type: USER_LOGOUT_SUCCESS,
   };
 };
+

@@ -1,0 +1,54 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  .nav-item-custom {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    padding-bottom: 4px;
+  }
+
+  .nav-item-custom::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-item-custom:hover::after,
+  .nav-item-custom.active-link::after {
+    width: 100%;
+  }
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6600;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  .title-hover {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+      color: #ff6600;
+    }
+  }
+  .dropdown-item-custom {
+    position: relative;
+    color: #333;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      background-color: #f0f0f0; /* Nền hover */
+      color: #000; /* Đậm hơn khi hover */
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}
