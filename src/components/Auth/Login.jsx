@@ -42,7 +42,7 @@ const Login = () => {
       toast.success("Login success");
       setIsloading(false);
       navigate("/");
-    }else {
+    } else {
       toast.error("Invalid email or password");
       setIsloading(false);
     }
@@ -84,7 +84,7 @@ const Login = () => {
           <input
             type="email"
             className="form-control"
-            placeholder="bruce@gmail.com"
+            placeholder="admin@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
