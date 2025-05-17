@@ -15,9 +15,6 @@ const App = () => {
             <Outlet />
           </PerfectScrollbar>
         </div>
-        {/* <div className="footer-container">
-          <FooterComponent />
-        </div> */}
       </div>
     </>
   );

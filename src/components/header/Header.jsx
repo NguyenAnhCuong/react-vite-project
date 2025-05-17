@@ -36,9 +36,9 @@ const Header = () => {
       <Navbar expand="lg" className="bg-body-tertiary navbar-container">
         <Container>
           <NavLink to="/" className={"navbar-brand"}>
-            <span className="title">React</span>
+            <span className="title">Little</span>
             <span className="title-hover" style={{ marginLeft: "5px" }}>
-              Vite
+              Quiz
             </span>
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -75,10 +75,16 @@ const Header = () => {
                   title={t("header.setting.setting")}
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item className="dropdown-item-custom" onClick={() => setShowModalProfile(true)}>
+                  <NavDropdown.Item
+                    className="dropdown-item-custom"
+                    onClick={() => setShowModalProfile(true)}
+                  >
                     {t("header.setting.profile")}
                   </NavDropdown.Item>
-                  <NavDropdown.Item className="dropdown-item-custom" onClick={() => handleLogOut()}>
+                  <NavDropdown.Item
+                    className="dropdown-item-custom"
+                    onClick={() => handleLogOut()}
+                  >
                     {t("header.setting.logout")}
                   </NavDropdown.Item>
                 </NavDropdown>

@@ -8,6 +8,7 @@ import silde2 from "../../assets/17.jpg";
 import silde3 from "../../assets/18.jpg";
 import { useState } from "react";
 import GetStarted from "./GetStartedCotent";
+import FooterComponent from "../footer/FooterComponent";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -85,11 +86,9 @@ const HomePage = () => {
             <GetStarted activeTab={activeTab} setActiveTab={setActiveTab} />
           )}
         </div>
-        <div className="product mt-5">
-          <h1>
-            <span>{t("homepage.title2")}</span>
-          </h1>
-        </div>
+      </div>
+      <div className="footer-container">
+        <FooterComponent />
       </div>
     </div>
   );

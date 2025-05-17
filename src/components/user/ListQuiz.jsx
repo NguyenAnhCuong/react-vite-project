@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { getQuizByUser } from "../utils/api/ApiServices";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import quizImg from "../../assets/quiz.jpg";
 
-const ListQuiz = (props) => {
+const ListQuiz = () => {
   const navigate = useNavigate();
   const [arrQuiz, setArrQuiz] = useState([]);
   const { t } = useTranslation();
@@ -15,10 +16,37 @@ const ListQuiz = (props) => {
   }, []);
 
   const getQuizData = async () => {
-    let res = await getQuizByUser();
-    if (res && res.EC === 0) {
-      setArrQuiz(res.DT);
-    }
+    // let res = await getQuizByUser();
+    // if (res && res.EC === 0) {
+    //   setArrQuiz(res.DT);
+    // }
+    let init = {
+      EC: 0,
+      DT: [
+        {
+          id: 1,
+          description: "Quiz number 1",
+          image: quizImg,
+        },
+        {
+          id: 2,
+          description: "Quiz number 2",
+          image: quizImg,
+        },
+        {
+          id: 3,
+          description: "Quiz number 3",
+          image: quizImg,
+        },
+        {
+          id: 4,
+          description: "Quiz number 4",
+          image: quizImg,
+        },
+      ],
+    };
+
+    setArrQuiz(init.DT);
   };
 
   return (
@@ -27,14 +55,10 @@ const ListQuiz = (props) => {
         arrQuiz.length > 0 &&
         arrQuiz.map((quiz, index) => {
           return (
-            <div
-              key={`${index}-quiz}`}
-              className="card"
-              style={{ width: "18rem" }}
-            >
+            <div key={`${quiz.id}`} className="card" style={{ width: "18rem" }}>
               <img
                 className="card-img-top"
-                src={`data:image/jpeg;base64,${quiz.image}`}
+                src={`${quiz.image}`}
                 alt="Card image cap"
               />
               <div className="card-body">

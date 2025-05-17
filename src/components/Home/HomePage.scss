@@ -49,6 +49,33 @@
         color: #e94c1f;
       }
     }
+    .explore-link {
+      position: relative;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      &:hover {
+        color: #e94c1f;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      &::after {
+        content: "→";
+        position: absolute;
+        opacity: 0;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+        margin-left: 8px;
+      }
+
+      &:hover::after {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     .content {
       h2 {
         font-weight: bold;
@@ -99,6 +126,76 @@
         font-weight: bold;
         text-transform: uppercase;
         color: #333;
+      }
+    }
+  }
+
+  .footer-container {
+    background-color: black;
+    color: white;
+    height: 400px;
+    margin: 30px 10px;
+    .footer-content {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      .footer-item {
+        .footer-title {
+          font-size: calc(1.4rem + 0.3vw);
+          color: #e94c1f;
+          .subtitle {
+            color: white;
+            &:hover {
+              color: #e94c1f;
+            }
+          }
+        }
+        .sitemap-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          row-gap: 0.5rem;
+
+          li {
+            width: 50%;
+
+            a {
+              color: #717275;
+              text-decoration: none;
+              transition: color 0.3s ease;
+
+              &:hover {
+                color: #e94c1f;
+              }
+            }
+          }
+        }
+        .social-icons {
+          display: flex;
+          gap: 15px;
+          .icons {
+            &:hover {
+              cursor: pointer;
+              color: #e94c1f;
+            }
+          }
+        }
+        p {
+          font-size: calc(0.8rem + 0.3vw);
+          color: #717275;
+        }
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            color: #717275;
+            display: block;
+            width: 50%;
+          }
+        }
       }
     }
   }

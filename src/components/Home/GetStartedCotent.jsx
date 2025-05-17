@@ -102,7 +102,9 @@ const GetStarted = (props) => {
               <div className="value">80%</div>
             </div>
 
-            <div className="explore">EXPLORE PRODUCTS</div>
+            <div className="explore-link" onClick={() => navigate("/user")}>
+              EXPLORE PRODUCTS
+            </div>
           </div>
         </>
       )}

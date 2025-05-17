@@ -10,7 +10,7 @@ import ModalResult from "./ModalResult";
 import RightContent from "./RigthContent/RightContent";
 import { useTranslation } from "react-i18next";
 
-const DetailQuiz = (props) => {
+const DetailQuiz = () => {
   const params = useParams();
   const quizId = params.id;
   const location = useLocation();
@@ -25,31 +25,39 @@ const DetailQuiz = (props) => {
     fetchQuestion();
   }, [quizId]);
 
-  const fetchQuestion = async () => {
-    let res = await getDataQuiz(quizId);
-    if (res && res.EC === 0) {
-      let raw = res.DT;
-      let data = _.chain(raw)
-        .groupBy("id")
-        .map((value, key) => {
-          let answers = [];
-          let questionDecription,
-            image = null;
-          value.forEach((item, index) => {
-            if (index === 0) {
-              questionDecription = item.description;
-              image = item.image;
-            }
-            item.answers.isTheSelected = false;
-            answers.push(item.answers);
-          });
-          answers = _.orderBy(answers, ["id"], ["asc"]);
+  // const fetchQuestion = async () => {
+  //   let res = await getDataQuiz(quizId);
+  //   if (res && res.EC === 0) {
+  //     let raw = res.DT;
+  //     let data = _.chain(raw)
+  //       .groupBy("id")
+  //       .map((value, key) => {
+  //         let answers = [];
+  //         let questionDecription,
+  //           image = null;
+  //         value.forEach((item, index) => {
+  //           if (index === 0) {
+  //             questionDecription = item.description;
+  //             image = item.image;
+  //           }
+  //           item.answers.isTheSelected = false;
+  //           answers.push(item.answers);
+  //         });
+  //         answers = _.orderBy(answers, ["id"], ["asc"]);
 
-          return { questionId: key, answers, questionDecription, image };
-        })
-        .value();
-      setListQuiz(data);
-    }
+  //         return { questionId: key, answers, questionDecription, image };
+  //       })
+  //       .value();
+  //     setListQuiz(data);
+  //   }
+  // };
+
+  const fetchQuestion = async () => {
+    let data = {
+      quizId: +quizId,
+    };
+
+    setListQuiz(data);
   };
 
   const handlePrev = () => {
