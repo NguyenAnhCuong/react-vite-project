@@ -16,12 +16,14 @@ const Questions = (props) => {
     props.handleCheckBox(aId, qId);
   };
 
+  //data:image/jpeg;base64,${listQuiz.image}
+
   return (
     <>
       {listQuiz.image ? (
         <div className="quiz-image">
           <span onClick={() => setShowModalPreviewImage(true)}>
-            <img src={`data:image/jpeg;base64,${listQuiz.image}`} />
+            <img src={`${listQuiz.image}`} />
           </span>
         </div>
       ) : (

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import ModalResult from "./ModalResult";
 import RightContent from "./RigthContent/RightContent";
 import { useTranslation } from "react-i18next";
+import question from "../../assets/question.jpg";
 
 const DetailQuiz = () => {
   const params = useParams();
@@ -53,9 +54,66 @@ const DetailQuiz = () => {
   // };
 
   const fetchQuestion = async () => {
-    let data = {
-      quizId: +quizId,
-    };
+    let data = [
+      {
+        quizId: +quizId,
+        questionDecription: "Day la cau hoi 1",
+        questionId: 1,
+        image: question,
+        answers: [
+          {
+            id: 1,
+            description: "Day la dap an 1",
+            isTheSelected: false,
+          },
+          {
+            id: 2,
+            description: "Day la dap an 2",
+            isTheSelected: false,
+          },
+          {
+            id: 3,
+            description: "Day la dap an 3",
+            isTheSelected: false,
+            isCorrect: true,
+          },
+          {
+            id: 4,
+            description: "Day la dap an 4",
+            isTheSelected: false,
+          },
+        ],
+      },
+      {
+        quizId: +quizId,
+        questionDecription: "Day la cau hoi 2",
+        questionId: 2,
+        image: question,
+        answers: [
+          {
+            id: 5,
+            description: "Day la dap an 5",
+            isTheSelected: false,
+          },
+          {
+            id: 6,
+            description: "Day la dap an 6",
+            isTheSelected: false,
+          },
+          {
+            id: 7,
+            description: "Day la dap an 7",
+            isTheSelected: false,
+          },
+          {
+            id: 8,
+            description: "Day la dap an 8",
+            isTheSelected: false,
+            isCorrect: true,
+          },
+        ],
+      },
+    ];
 
     setListQuiz(data);
   };
